@@ -1,288 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>House of Coco | Homemade Food</title>
+    <title>House of Coco | Homemade Meals</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
     <header class="site-header">
 
-        <div class="logo-area">
-            <h1>House of Coco</h1>
-            <p data-en="Homemade food, made with love"
-               data-zh="家的味道，用心制作">
-               Homemade food, made with love
-            </p>
+        <div class="brand">
+
+            <div class="brand-mark">
+                HC
+            </div>
+
+            <div class="brand-text">
+
+                <strong>
+                    HOUSE OF COCO
+                </strong>
+
+                <span data-i18n="brandSubtitle">
+                    Homemade meals for busy people
+                </span>
+
+            </div>
+
         </div>
 
-        <div class="header-controls">
 
-            <button id="languageToggle" class="control-button">
-                中文
+        <nav class="desktop-nav">
+
+            <a href="#menu" data-i18n="navMenu">
+                This Week's Menu
+            </a>
+
+            <a href="#how-it-works" data-i18n="navHow">
+                How It Works
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <button
+                class="language-toggle"
+                id="languageToggle"
+            >
+
+                <span id="languageLabel">
+                    EN
+                </span>
+
             </button>
 
-            <button id="darkModeToggle" class="control-button">
-                🌙
+
+            <button
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Toggle dark mode"
+            >
+                ☾
             </button>
+
+
+            <a
+                href="#menu"
+                class="header-order-button"
+                data-i18n="orderNow"
+            >
+                Order Now
+            </a>
 
         </div>
 
     </header>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- =========================
+         MAIN
+    ========================== -->
 
     <main>
 
-        <!-- HERO -->
 
-        <section class="hero-section">
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero">
 
             <div class="hero-content">
 
-                <p class="eyebrow"
-                   data-en="WEEKLY HOMEMADE MENU"
-                   data-zh="每周家常菜单">
-                   WEEKLY HOMEMADE MENU
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    <span data-i18n="eyebrow">
+                        WEEKLY HOMEMADE MEALS
+                    </span>
+
+                </div>
+
+
+                <h1 data-i18n="heroTitle">
+
+                    A proper meal.<br>
+
+                    Without the cooking.
+
+                </h1>
+
+
+                <p data-i18n="heroDescription">
+
+                    Homemade food prepared for busy people who want something comforting, convenient, and delicious.
+
                 </p>
 
-                <h2 data-en="Good food for busy days."
-                    data-zh="忙碌的日子，也要好好吃饭。">
-                    Good food for busy days.
-                </h2>
 
-                <p data-en="Skip the cooking. Enjoy a comforting homemade meal delivered to you."
-                   data-zh="不用煮饭，也能享受温暖的家常美食。">
-                   Skip the cooking. Enjoy a comforting homemade meal delivered to you.
-                </p>
+                <div class="hero-actions">
 
-                <a href="#menu" class="primary-button"
-                   data-en="View This Week's Menu"
-                   data-zh="查看本周菜单">
-                    View This Week's Menu
-                </a>
-
-            </div>
-
-        </section>
+                    <a
+                        href="#menu"
+                        class="primary-button"
+                        data-i18n="viewMenu"
+                    >
+                        View This Week's Menu →
+                    </a>
 
 
-        <!-- ================= MENU ================= -->
+                    <a
+                        href="#how-it-works"
+                        class="secondary-button"
+                        data-i18n="learnMore"
+                    >
+                        How It Works
+                    </a>
 
-        <section id="menu" class="menu-section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow"
-                   data-en="THIS WEEK"
-                   data-zh="本周菜单">
-                   THIS WEEK
-                </p>
-
-                <h2 data-en="Choose your meals"
-                    data-zh="选择您的餐点">
-                    Choose your meals
-                </h2>
-
-                <p data-en="Order one meal or prepare your meals for the whole week."
-                   data-zh="可以单点，也可以一次预订一周的餐点。">
-                    Order one meal or prepare your meals for the whole week.
-                </p>
-
-            </div>
+                </div>
 
 
-            <div id="menuContainer" class="menu-grid">
+                <div class="hero-note">
 
-                <!-- MENU ITEMS LOADED BY JAVASCRIPT -->
+                    <span>
+                        ✦
+                    </span>
 
-            </div>
+                    <span data-i18n="heroNote">
+                        Fresh menus updated weekly
+                    </span>
 
-        </section>
-
-
-        <!-- ================= ORDER SECTION ================= -->
-
-        <section id="order" class="order-section">
-
-            <div class="section-heading">
-
-                <p class="eyebrow"
-                   data-en="YOUR ORDER"
-                   data-zh="您的订单">
-                   YOUR ORDER
-                </p>
-
-                <h2 data-en="Complete your order"
-                    data-zh="完成您的订单">
-                    Complete your order
-                </h2>
+                </div>
 
             </div>
 
 
-            <div class="order-layout">
+            <div class="hero-visual">
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+
+                        <span data-i18n="featuredThisWeek">
+                            FEATURED THIS WEEK
+                        </span>
 
 
-                <!-- CART -->
+                        <span class="status-badge">
 
-                <div class="order-card">
+                            <span></span>
 
-                    <h3 data-en="Selected meals"
-                        data-zh="已选择的餐点">
-                        Selected meals
-                    </h3>
+                            <span data-i18n="available">
+                                AVAILABLE
+                            </span>
 
-                    <div id="cartContainer">
-
-                        <p class="empty-cart"
-                           data-en="Your order is currently empty."
-                           data-zh="您的订单目前是空的。">
-                           Your order is currently empty.
-                        </p>
+                        </span>
 
                     </div>
 
-                    <div class="price-summary">
 
-                        <div class="price-row">
-                            <span data-en="Food subtotal"
-                                  data-zh="餐点小计">
-                                Food subtotal
+                    <div class="hero-food-image">
+
+                        <img
+                            id="featuredMealImage"
+                            src="images/menu-20-7.jpg"
+                            alt="House of Coco weekly menu"
+                        >
+
+                    </div>
+
+
+                    <div class="hero-food-info">
+
+                        <div>
+
+                            <span
+                                class="food-category"
+                                data-i18n="homemadeMeal"
+                            >
+                                HOMEMADE MEAL
                             </span>
 
-                            <strong id="foodSubtotal">
-                                RM 0.00
-                            </strong>
-                        </div>
 
-                        <div class="price-row">
-
-                            <span data-en="Estimated delivery"
-                                  data-zh="预计配送费">
-                                Estimated delivery
-                            </span>
-
-                            <strong id="deliveryFee">
-                                —
-                            </strong>
+                            <h3 id="featuredMealName">
+                                Mongolian Chicken
+                            </h3>
 
                         </div>
 
-                        <div class="price-row total-row">
 
-                            <span data-en="Estimated total"
-                                  data-zh="预计总额">
-                                Estimated total
-                            </span>
-
-                            <strong id="grandTotal">
-                                RM 0.00
-                            </strong>
-
-                        </div>
+                        <strong id="featuredMealPrice">
+                            RM 12.00
+                        </strong>
 
                     </div>
 
                 </div>
 
+            </div>
 
-                <!-- CUSTOMER DETAILS -->
-
-                <div class="order-card">
-
-                    <h3 data-en="Delivery details"
-                        data-zh="配送资料">
-                        Delivery details
-                    </h3>
+        </section>
 
 
-                    <form id="orderForm">
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <section
+            class="menu-section"
+            id="menu"
+        >
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="eyebrow">
+
+                        <span class="eyebrow-dot"></span>
+
+                        <span data-i18n="menuEyebrow">
+                            CURRENT MENU
+                        </span>
+
+                    </div>
 
 
-                        <label for="customerName"
-                               data-en="Your name"
-                               data-zh="您的姓名">
-                            Your name
+                    <h2 data-i18n="menuTitle">
+                        This week's menu.
+                    </h2>
+
+
+                    <p data-i18n="menuDescription">
+
+                        Choose what you'd like, tell us where to deliver, and we'll take care of the rest.
+
+                    </p>
+
+                </div>
+
+
+                <div class="menu-week">
+
+                    <span data-i18n="weekOf">
+                        WEEK OF
+                    </span>
+
+                    <strong id="menuWeek">
+                        20 JUL — 24 JUL 2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="menu-grid"
+                id="menuGrid"
+            >
+
+                <!-- Menu cards generated by JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ORDER
+        ========================== -->
+
+        <section
+            class="order-section"
+            id="order"
+        >
+
+            <div class="order-container">
+
+
+                <div class="order-intro">
+
+                    <div class="eyebrow">
+
+                        <span class="eyebrow-dot"></span>
+
+                        <span data-i18n="orderEyebrow">
+                            YOUR ORDER
+                        </span>
+
+                    </div>
+
+
+                    <h2 data-i18n="orderTitle">
+                        Almost there.
+                    </h2>
+
+
+                    <p data-i18n="orderDescription">
+
+                        Tell us what you would like and where you would like it delivered.
+
+                    </p>
+
+                </div>
+
+
+                <form
+                    id="orderForm"
+                    class="order-form"
+                >
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="customerName"
+                            data-i18n="nameLabel"
+                        >
+                            Your Name
                         </label>
+
 
                         <input
                             type="text"
                             id="customerName"
                             required
-                            placeholder="Enter your name"
                         >
 
+                    </div>
 
-                        <label for="customerPhone"
-                               data-en="WhatsApp number"
-                               data-zh="WhatsApp号码">
-                            WhatsApp number
+
+                    <div class="form-group">
+
+                        <label
+                            for="customerPhone"
+                            data-i18n="phoneLabel"
+                        >
+                            WhatsApp Number
                         </label>
+
 
                         <input
                             type="tel"
                             id="customerPhone"
                             required
-                            placeholder="e.g. 0123456789"
                         >
 
+                    </div>
 
-                        <label for="deliveryAddress"
-                               data-en="Delivery address"
-                               data-zh="配送地址">
-                            Delivery address
+
+                    <div class="form-group full-width">
+
+                        <label
+                            for="deliveryAddress"
+                            data-i18n="addressLabel"
+                        >
+                            Delivery Address
                         </label>
+
 
                         <textarea
                             id="deliveryAddress"
+                            rows="3"
                             required
-                            rows="4"
-                            placeholder="Enter your complete delivery address"
                         ></textarea>
 
+                    </div>
 
-                        <button
-                            type="button"
-                            id="getDeliveryEstimate"
-                            class="secondary-button"
-                        >
 
-                            <span data-en="Get Lalamove delivery estimate"
-                                  data-zh="获取 Lalamove 配送估价">
-                                Get Lalamove delivery estimate
+                    <!-- DELIVERY ESTIMATE -->
+
+                    <div class="delivery-estimate">
+
+                        <div class="delivery-icon">
+                            ⌖
+                        </div>
+
+
+                        <div>
+
+                            <span data-i18n="deliveryEstimate">
+                                Estimated delivery fee
                             </span>
 
-                        </button>
+
+                            <strong id="deliveryFee">
+                                Enter your address
+                            </strong>
 
 
-                        <div id="deliveryMessage"
-                             class="delivery-message">
+                            <small data-i18n="deliveryNote">
+
+                                Final delivery fee may vary depending on the actual Lalamove quotation.
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="getDeliveryEstimate"
+                        class="estimate-button"
+                        data-i18n="getEstimate"
+                    >
+                        Get Lalamove Delivery Estimate
+                    </button>
+
+
+                    <div
+                        id="deliveryMessage"
+                        class="delivery-message"
+                    ></div>
+
+
+                    <!-- ORDER SUMMARY -->
+
+                    <div class="order-summary">
+
+                        <div class="summary-header">
+
+                            <h3 data-i18n="summaryTitle">
+                                Your order
+                            </h3>
+
+
+                            <button
+                                type="button"
+                                id="clearOrder"
+                                data-i18n="clearOrder"
+                            >
+                                Clear
+                            </button>
 
                         </div>
 
 
-                        <button
-                            type="submit"
-                            class="primary-button submit-button"
-                        >
+                        <div id="orderItems">
 
-                            <span data-en="Review Order"
-                                  data-zh="查看订单">
-                                Review Order
+                            <p
+                                class="empty-order"
+                                data-i18n="emptyOrder"
+                            >
+                                Select something from the menu to get started.
+                            </p>
+
+                        </div>
+
+
+                        <div class="summary-total">
+
+                            <span data-i18n="estimatedTotal">
+                                Estimated Total
                             </span>
 
-                        </button>
 
-                    </form>
+                            <strong id="orderTotal">
+                                RM 0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-order-button"
+                        data-i18n="submitOrder"
+                    >
+                        Continue to WhatsApp →
+                    </button>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
+
+        <section
+            class="how-section"
+            id="how-it-works"
+        >
+
+            <div class="section-heading centered">
+
+                <div class="eyebrow">
+
+                    <span class="eyebrow-dot"></span>
+
+                    <span data-i18n="howEyebrow">
+                        HOW IT WORKS
+                    </span>
+
+                </div>
+
+
+                <h2 data-i18n="howTitle">
+
+                    Simple from craving<br>
+
+                    to delivery.
+
+                </h2>
+
+            </div>
+
+
+            <div class="steps-grid">
+
+
+                <div class="step-card">
+
+                    <span class="step-number">
+                        01
+                    </span>
+
+
+                    <div class="step-icon">
+                        ◉
+                    </div>
+
+
+                    <h3 data-i18n="stepOneTitle">
+                        Choose your meal
+                    </h3>
+
+
+                    <p data-i18n="stepOneDescription">
+
+                        Browse this week's homemade menu and select what you would like.
+
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">
+                        02
+                    </span>
+
+
+                    <div class="step-icon">
+                        ✦
+                    </div>
+
+
+                    <h3 data-i18n="stepTwoTitle">
+                        Tell us where
+                    </h3>
+
+
+                    <p data-i18n="stepTwoDescription">
+
+                        Enter your delivery address and receive an estimated delivery fee.
+
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">
+                        03
+                    </span>
+
+
+                    <div class="step-icon">
+                        →
+                    </div>
+
+
+                    <h3 data-i18n="stepThreeTitle">
+                        We prepare the rest
+                    </h3>
+
+
+                    <p data-i18n="stepThreeDescription">
+
+                        Confirm your order and we will prepare your meal for delivery.
+
+                    </p>
 
                 </div>
 
@@ -291,28 +644,82 @@
         </section>
 
 
-        <!-- ================= ORDER CONFIRMATION ================= -->
+        <!-- =========================
+             ADMIN DEMO
+        ========================== -->
 
-        <section id="orderConfirmation"
-                 class="confirmation-section hidden">
+        <section class="admin-demo-section">
 
-            <div class="confirmation-card">
+            <div class="admin-demo-container">
 
-                <div class="success-icon">
-                    ✓
+                <div class="admin-demo-heading">
+
+                    <div class="eyebrow">
+
+                        <span class="eyebrow-dot"></span>
+
+                        DEMO FEATURE
+
+                    </div>
+
+
+                    <h2>
+
+                        Change the entire<br>
+
+                        weekly menu in one click.
+
+                    </h2>
+
+
+                    <p>
+
+                        This is the feature designed specifically for a weekly-changing menu business.
+
+                        Select another week to instantly change the customer-facing menu.
+
+                    </p>
+
                 </div>
 
-                <h2 data-en="Order ready to review"
-                    data-zh="订单已准备好查看">
-                    Order ready to review
-                </h2>
 
-                <p data-en="Your order details have been prepared."
-                   data-zh="您的订单资料已经准备好了。">
-                    Your order details have been prepared.
-                </p>
+                <div class="menu-switcher">
 
-                <div id="finalOrderSummary"></div>
+                    <button
+                        class="menu-switch-button active"
+                        data-menu="week20"
+                    >
+                        20/7 – 24/7
+                    </button>
+
+
+                    <button
+                        class="menu-switch-button"
+                        data-menu="week13"
+                    >
+                        13/7 – 17/7
+                    </button>
+
+
+                    <button
+                        class="menu-switch-button"
+                        data-menu="week6"
+                    >
+                        6/7 – 10/7
+                    </button>
+
+                </div>
+
+
+                <div class="admin-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="adminStatusText">
+                        20/7 – 24/7 menu is currently live
+                    </span>
+
+                </div>
 
             </div>
 
@@ -321,18 +728,50 @@
     </main>
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
-    <footer>
+    <footer class="site-footer">
 
-        <p>
-            © 2026 House of Coco
-        </p>
+        <div class="footer-brand">
 
-        <p data-en="Homemade meals for busy people."
-           data-zh="为忙碌生活准备的家常美食。">
-           Homemade meals for busy people.
-        </p>
+            <div class="brand-mark">
+                HC
+            </div>
+
+
+            <div>
+
+                <strong>
+                    HOUSE OF COCO
+                </strong>
+
+
+                <span data-i18n="footerText">
+                    Homemade meals for busy people.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <a
+                href="#menu"
+                data-i18n="footerOrder"
+            >
+                Order This Week's Menu
+            </a>
+
+
+            <span>
+                © 2026 House of Coco
+            </span>
+
+        </div>
 
     </footer>
 
@@ -340,4 +779,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
