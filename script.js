@@ -1,438 +1,829 @@
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    console.log("House of Coco V1.2 loaded");
-
-
     /* =========================
-       LANGUAGE SYSTEM
-    ========================== */
+       MENU DATA
+    ========================= */
 
+    const menuItems = [
 
-    let currentLanguage = "en";
+        {
+            id: 1,
 
+            day: "Monday",
 
-    const translations = {
+            dayZh: "星期一",
 
+            name: "Mongolian Chicken",
 
-        en: {
+            nameZh: "蒙古鸡",
 
+            description: "Tender chicken with a rich and savoury sauce.",
 
-            brandSubtitle:
-                "Homemade meals for busy people",
+            descriptionZh: "嫩鸡肉搭配浓郁咸香的酱汁。",
 
+            price: 12,
 
-            navMenu:
-                "This Week's Menu",
-
-
-            navHow:
-                "How It Works",
-
-
-            orderNow:
-                "Order Now",
-
-
-            eyebrow:
-                "WEEKLY HOMEMADE MEALS",
-
-
-            heroTitle:
-                "A proper meal.<br>Without the cooking.",
-
-
-            heroDescription:
-                "Homemade food prepared for busy people who want something comforting, convenient, and delicious.",
-
-
-            viewMenu:
-                "View This Week's Menu →",
-
-
-            learnMore:
-                "How It Works",
-
-
-            heroNote:
-                "Fresh menus updated weekly",
-
-
-            featuredThisWeek:
-                "FEATURED THIS WEEK",
-
-
-            available:
-                "AVAILABLE",
-
-
-            homemadeMeal:
-                "HOMEMADE MEAL",
-
-
-            menuEyebrow:
-                "CURRENT MENU",
-
-
-            menuTitle:
-                "This week's menu.",
-
-
-            menuDescription:
-                "Choose what you'd like, tell us where to deliver, and we'll take care of the rest.",
-
-
-            weekOf:
-                "WEEK OF",
-
-
-            orderEyebrow:
-                "YOUR ORDER",
-
-
-            orderTitle:
-                "Almost there.",
-
-
-            orderDescription:
-                "Tell us what you would like and where you would like it delivered.",
-
-
-            nameLabel:
-                "Your Name",
-
-
-            namePlaceholder:
-                "e.g. Sarah",
-
-
-            phoneLabel:
-                "WhatsApp Number",
-
-
-            phonePlaceholder:
-                "e.g. 012 345 6789",
-
-
-            addressLabel:
-                "Delivery Address",
-
-
-            addressPlaceholder:
-                "Enter your delivery address",
-
-
-            deliveryEstimate:
-                "Estimated delivery fee",
-
-
-            deliveryNote:
-                "Final delivery fee may vary depending on the actual Lalamove quotation.",
-
-
-            summaryTitle:
-                "Your order",
-
-
-            clearOrder:
-                "Clear",
-
-
-            emptyOrder:
-                "Select something from the menu to get started.",
-
-
-            estimatedTotal:
-                "Estimated Total",
-
-
-            submitOrder:
-                "Continue to WhatsApp →",
-
-
-            howEyebrow:
-                "HOW IT WORKS",
-
-
-            howTitle:
-                "Simple from craving<br>to delivery.",
-
-
-            stepOneTitle:
-                "Choose your meal",
-
-
-            stepOneDescription:
-                "Browse this week's homemade menu and select what you would like.",
-
-
-            stepTwoTitle:
-                "Tell us where",
-
-
-            stepTwoDescription:
-                "Enter your delivery address and receive an estimated delivery fee.",
-
-
-            stepThreeTitle:
-                "We prepare the rest",
-
-
-            stepThreeDescription:
-                "Confirm your order and we will prepare your meal for delivery.",
-
-
-            footerText:
-                "Homemade meals for busy people.",
-
-
-            footerOrder:
-                "Order This Week's Menu"
-
+            image: "images/monday.jpg"
 
         },
 
+        {
+            id: 2,
 
-        zh: {
+            day: "Tuesday",
 
+            dayZh: "星期二",
 
-            brandSubtitle:
-                "为忙碌生活准备的家常美食",
+            name: "Sweet and Sour Pork",
 
+            nameZh: "咕噜肉",
 
-            navMenu:
-                "本周菜单",
+            description: "Crispy pork with a sweet and tangy sauce.",
 
+            descriptionZh: "酥脆猪肉搭配酸甜酱汁。",
 
-            navHow:
-                "如何运作",
+            price: 12,
 
+            image: "images/tuesday.jpg"
 
-            orderNow:
-                "立即订购",
+        },
 
+        {
+            id: 3,
 
-            eyebrow:
-                "每周家常美食",
+            day: "Wednesday",
 
+            dayZh: "星期三",
 
-            heroTitle:
-                "想吃一顿好的。<br>不用自己煮。",
+            name: "Braised Chicken",
 
+            nameZh: "焖鸡",
 
-            heroDescription:
-                "为忙碌的人准备的家常美食。方便、温暖，也好吃。",
+            description: "Comforting homemade braised chicken.",
 
+            descriptionZh: "充满家的味道的焖鸡。",
 
-            viewMenu:
-                "查看本周菜单 →",
+            price: 12,
 
+            image: "images/wednesday.jpg"
 
-            learnMore:
-                "如何运作",
+        },
 
+        {
+            id: 4,
 
-            heroNote:
-                "每周更新菜单",
+            day: "Thursday",
 
+            dayZh: "星期四",
 
-            featuredThisWeek:
-                "本周精选",
+            name: "Homemade Special",
 
+            nameZh: "家常特色菜",
 
-            available:
-                "可订购",
+            description: "A delicious homemade meal prepared fresh.",
 
+            descriptionZh: "新鲜制作的美味家常餐。",
 
-            homemadeMeal:
-                "家常美食",
+            price: 12,
 
+            image: "images/thursday.jpg"
 
-            menuEyebrow:
-                "当前菜单",
+        },
 
+        {
+            id: 5,
 
-            menuTitle:
-                "本周菜单。",
+            day: "Friday",
 
+            dayZh: "星期五",
 
-            menuDescription:
-                "选择你想吃的食物，告诉我们送到哪里，剩下的交给我们。",
+            name: "Weekly Special",
 
+            nameZh: "每周特色菜",
 
-            weekOf:
-                "本周",
+            description: "End the week with something delicious.",
 
+            descriptionZh: "用美味的家常菜结束这一周。",
 
-            orderEyebrow:
-                "你的订单",
+            price: 12,
 
+            image: "images/friday.jpg"
 
-            orderTitle:
-                "快完成了。",
+        }
 
+    ];
 
-            orderDescription:
-                "告诉我们你想吃什么，以及需要送到哪里。",
 
+    /* =========================
+       STATE
+    ========================= */
 
-            nameLabel:
-                "你的名字",
+    let cart = [];
 
+    let currentLanguage = "en";
 
-            namePlaceholder:
-                "例如：Sarah",
+    let deliveryEstimate = null;
 
 
-            phoneLabel:
-                "WhatsApp号码",
+    /* =========================
+       ELEMENTS
+    ========================= */
 
+    const menuContainer =
+        document.getElementById("menuContainer");
 
-            phonePlaceholder:
-                "例如：012 345 6789",
+    const cartContainer =
+        document.getElementById("cartContainer");
 
+    const foodSubtotal =
+        document.getElementById("foodSubtotal");
 
-            addressLabel:
-                "配送地址",
+    const deliveryFee =
+        document.getElementById("deliveryFee");
 
+    const grandTotal =
+        document.getElementById("grandTotal");
 
-            addressPlaceholder:
-                "输入你的配送地址",
+    const getDeliveryEstimateButton =
+        document.getElementById("getDeliveryEstimate");
 
+    const deliveryMessage =
+        document.getElementById("deliveryMessage");
 
-            deliveryEstimate:
-                "预计配送费",
+    const orderForm =
+        document.getElementById("orderForm");
 
+    const orderConfirmation =
+        document.getElementById("orderConfirmation");
 
-            deliveryNote:
-                "最终配送费用可能会根据实际 Lalamove 报价有所不同。",
+    const finalOrderSummary =
+        document.getElementById("finalOrderSummary");
 
 
-            summaryTitle:
-                "你的订单",
+    /* =========================
+       RENDER MENU
+    ========================= */
 
+    function renderMenu() {
 
-            clearOrder:
-                "清除",
+        menuContainer.innerHTML = "";
 
+        menuItems.forEach(function (item) {
 
-            emptyOrder:
-                "从菜单选择食物开始。",
+            const name =
+                currentLanguage === "en"
+                    ? item.name
+                    : item.nameZh;
 
+            const description =
+                currentLanguage === "en"
+                    ? item.description
+                    : item.descriptionZh;
 
-            estimatedTotal:
-                "预计总额",
+            const day =
+                currentLanguage === "en"
+                    ? item.day
+                    : item.dayZh;
 
 
-            submitOrder:
-                "继续前往 WhatsApp →",
+            const menuCard = document.createElement("article");
 
+            menuCard.className = "menu-card";
 
-            howEyebrow:
-                "如何运作",
 
+            menuCard.innerHTML = `
 
-            howTitle:
-                "从想吃什么<br>到送到家。",
+                <img
+                    src="${item.image}"
+                    alt="${name}"
+                    class="menu-image"
+                    onerror="this.style.display='none'"
+                >
 
+                <div class="menu-card-content">
 
-            stepOneTitle:
-                "选择你的食物",
+                    <div class="menu-day">
+                        ${day}
+                    </div>
 
+                    <h3>
+                        ${name}
+                    </h3>
 
-            stepOneDescription:
-                "浏览本周家常菜单并选择你想吃的食物。",
+                    <p class="menu-description">
+                        ${description}
+                    </p>
 
+                    <div class="menu-bottom">
 
-            stepTwoTitle:
-                "告诉我们地址",
+                        <span class="menu-price">
+                            RM ${item.price.toFixed(2)}
+                        </span>
 
+                        <button
+                            class="add-button"
+                            data-id="${item.id}"
+                            aria-label="Add ${name}"
+                        >
+                            +
+                        </button>
 
-            stepTwoDescription:
-                "输入配送地址并查看预计配送费用。",
+                    </div>
 
+                </div>
 
-            stepThreeTitle:
-                "我们准备好一切",
+            `;
 
 
-            stepThreeDescription:
-                "确认订单，我们会准备你的食物并安排配送。",
+            menuContainer.appendChild(menuCard);
 
+        });
 
-            footerText:
-                "为忙碌生活准备的家常美食。",
 
+        document.querySelectorAll(".add-button")
+            .forEach(function (button) {
 
-            footerOrder:
-                "订购本周菜单"
+                button.addEventListener("click", function () {
 
+                    const itemId =
+                        Number(button.dataset.id);
+
+                    addToCart(itemId);
+
+                });
+
+            });
+
+    }
+
+
+    /* =========================
+       ADD TO CART
+    ========================= */
+
+    function addToCart(itemId) {
+
+        const existingItem =
+            cart.find(function (item) {
+
+                return item.id === itemId;
+
+            });
+
+
+        if (existingItem) {
+
+            existingItem.quantity++;
+
+        } else {
+
+            const menuItem =
+                menuItems.find(function (item) {
+
+                    return item.id === itemId;
+
+                });
+
+
+            cart.push({
+
+                ...menuItem,
+
+                quantity: 1
+
+            });
 
         }
 
 
-    };
-
-
-    function updateLanguage() {
-
-
-        document
-            .querySelectorAll("[data-i18n]")
-            .forEach(function (element) {
-
-
-                const key =
-                    element.getAttribute("data-i18n");
-
-
-                if (translations[currentLanguage][key]) {
-
-
-                    element.innerHTML =
-                        translations[currentLanguage][key];
-
-
-                }
-
-
-            });
-
-
-        document
-            .querySelectorAll("[data-i18n-placeholder]")
-            .forEach(function (element) {
-
-
-                const key =
-                    element.getAttribute(
-                        "data-i18n-placeholder"
-                    );
-
-
-                if (translations[currentLanguage][key]) {
-
-
-                    element.placeholder =
-                        translations[currentLanguage][key];
-
-
-                }
-
-
-            });
-
-
-        document
-            .getElementById("languageLabel")
-            .textContent =
-                currentLanguage === "en"
-                    ? "EN"
-                    : "中";
-
+        renderCart();
 
     }
 
+
+    /* =========================
+       CHANGE QUANTITY
+    ========================= */
+
+    function changeQuantity(itemId, change) {
+
+        const item =
+            cart.find(function (item) {
+
+                return item.id === itemId;
+
+            });
+
+
+        if (!item) return;
+
+
+        item.quantity += change;
+
+
+        if (item.quantity <= 0) {
+
+            cart =
+                cart.filter(function (cartItem) {
+
+                    return cartItem.id !== itemId;
+
+                });
+
+        }
+
+
+        renderCart();
+
+    }
+
+
+    /* =========================
+       RENDER CART
+    ========================= */
+
+    function renderCart() {
+
+        cartContainer.innerHTML = "";
+
+
+        if (cart.length === 0) {
+
+            cartContainer.innerHTML = `
+
+                <p class="empty-cart">
+
+                    ${
+                        currentLanguage === "en"
+                            ? "Your order is currently empty."
+                            : "您的订单目前是空的。"
+                    }
+
+                </p>
+
+            `;
+
+            updateTotals();
+
+            return;
+
+        }
+
+
+        cart.forEach(function (item) {
+
+            const name =
+                currentLanguage === "en"
+                    ? item.name
+                    : item.nameZh;
+
+
+            const cartItem =
+                document.createElement("div");
+
+
+            cartItem.className = "cart-item";
+
+
+            cartItem.innerHTML = `
+
+                <div class="cart-item-info">
+
+                    <h4>
+                        ${name}
+                    </h4>
+
+                    <p>
+                        RM ${item.price.toFixed(2)}
+                    </p>
+
+                </div>
+
+
+                <div class="quantity-controls">
+
+                    <button
+                        class="quantity-button decrease"
+                        data-id="${item.id}"
+                    >
+                        −
+                    </button>
+
+                    <strong>
+                        ${item.quantity}
+                    </strong>
+
+                    <button
+                        class="quantity-button increase"
+                        data-id="${item.id}"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            `;
+
+
+            cartContainer.appendChild(cartItem);
+
+        });
+
+
+        document.querySelectorAll(".decrease")
+            .forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    changeQuantity(
+
+                        Number(button.dataset.id),
+
+                        -1
+
+                    );
+
+                });
+
+            });
+
+
+        document.querySelectorAll(".increase")
+            .forEach(function (button) {
+
+                button.addEventListener("click", function () {
+
+                    changeQuantity(
+
+                        Number(button.dataset.id),
+
+                        1
+
+                    );
+
+                });
+
+            });
+
+
+        updateTotals();
+
+    }
+
+
+    /* =========================
+       TOTAL CALCULATION
+    ========================= */
+
+    function calculateFoodSubtotal() {
+
+        return cart.reduce(function (total, item) {
+
+            return total + (item.price * item.quantity);
+
+        }, 0);
+
+    }
+
+
+    function updateTotals() {
+
+        const subtotal =
+            calculateFoodSubtotal();
+
+
+        foodSubtotal.textContent =
+            `RM ${subtotal.toFixed(2)}`;
+
+
+        if (deliveryEstimate !== null) {
+
+            deliveryFee.textContent =
+                `RM ${deliveryEstimate.toFixed(2)}`;
+
+            grandTotal.textContent =
+                `RM ${(subtotal + deliveryEstimate).toFixed(2)}`;
+
+        } else {
+
+            deliveryFee.textContent =
+                "—";
+
+            grandTotal.textContent =
+                `RM ${subtotal.toFixed(2)}`;
+
+        }
+
+    }
+
+
+    /* =========================
+       LALAMOVE ESTIMATE
+    ========================= */
+
+    getDeliveryEstimateButton
+        .addEventListener("click", function () {
+
+
+            if (cart.length === 0) {
+
+                deliveryMessage.textContent =
+                    currentLanguage === "en"
+
+                        ? "Please select at least one meal first."
+
+                        : "请先选择至少一个餐点。";
+
+                return;
+
+            }
+
+
+            const address =
+                document
+                    .getElementById("deliveryAddress")
+                    .value
+                    .trim();
+
+
+            if (!address) {
+
+                deliveryMessage.textContent =
+                    currentLanguage === "en"
+
+                        ? "Please enter your delivery address first."
+
+                        : "请先输入您的配送地址。";
+
+                return;
+
+            }
+
+
+            getDeliveryEstimateButton.disabled =
+                true;
+
+
+            getDeliveryEstimateButton.textContent =
+                currentLanguage === "en"
+
+                    ? "Connecting to Lalamove..."
+
+                    : "正在连接 Lalamove...";
+
+
+            deliveryMessage.textContent =
+                currentLanguage === "en"
+
+                    ? "Preparing your delivery quotation..."
+
+                    : "正在准备您的配送报价...";
+
+
+            /*
+                TEMPORARY V1.3 PLACEHOLDER
+
+                The actual Lalamove API will be connected
+                through a secure Google Apps Script backend.
+
+                Pickup location:
+
+                Jalan TBK 2/3,
+                Taman Bukit Kepayang,
+                Seremban 2,
+                Negeri Sembilan
+
+                DO NOT PUT LALAMOVE API KEYS HERE.
+            */
+
+
+            setTimeout(function () {
+
+
+                deliveryEstimate = null;
+
+
+                deliveryFee.textContent =
+                    currentLanguage === "en"
+
+                        ? "Pending"
+
+                        : "待确认";
+
+
+                grandTotal.textContent =
+                    `RM ${calculateFoodSubtotal().toFixed(2)}`;
+
+
+                deliveryMessage.innerHTML =
+
+                    currentLanguage === "en"
+
+                        ? "Your real Lalamove delivery quotation will be calculated here once the secure backend is connected."
+
+                        : "连接安全后台后，这里将显示真实的 Lalamove 配送报价。";
+
+
+                getDeliveryEstimateButton.disabled =
+                    false;
+
+
+                getDeliveryEstimateButton.textContent =
+                    currentLanguage === "en"
+
+                        ? "Get Lalamove delivery estimate"
+
+                        : "获取 Lalamove 配送估价";
+
+
+            }, 1000);
+
+
+        });
+
+
+    /* =========================
+       ORDER REVIEW
+    ========================= */
+
+    orderForm.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+
+        if (cart.length === 0) {
+
+            alert(
+
+                currentLanguage === "en"
+
+                    ? "Please select at least one meal."
+
+                    : "请先选择至少一个餐点。"
+
+            );
+
+            return;
+
+        }
+
+
+        const name =
+            document
+                .getElementById("customerName")
+                .value;
+
+
+        const phone =
+            document
+                .getElementById("customerPhone")
+                .value;
+
+
+        const address =
+            document
+                .getElementById("deliveryAddress")
+                .value;
+
+
+        const subtotal =
+            calculateFoodSubtotal();
+
+
+        let summaryHTML = `
+
+            <p>
+                <strong>
+                    ${
+                        currentLanguage === "en"
+                            ? "Customer"
+                            : "顾客"
+                    }:
+                </strong>
+
+                ${name}
+            </p>
+
+
+            <p>
+                <strong>
+                    WhatsApp:
+                </strong>
+
+                ${phone}
+            </p>
+
+
+            <p>
+                <strong>
+                    ${
+                        currentLanguage === "en"
+                            ? "Address"
+                            : "地址"
+                    }:
+                </strong>
+
+                ${address}
+            </p>
+
+
+            <hr>
+
+
+            <h3>
+                ${
+                    currentLanguage === "en"
+                        ? "Items"
+                        : "餐点"
+                }
+            </h3>
+
+        `;
+
+
+        cart.forEach(function (item) {
+
+            const itemName =
+                currentLanguage === "en"
+                    ? item.name
+                    : item.nameZh;
+
+
+            summaryHTML += `
+
+                <p>
+                    ${itemName}
+                    × ${item.quantity}
+                    — RM ${(item.price * item.quantity).toFixed(2)}
+                </p>
+
+            `;
+
+        });
+
+
+        summaryHTML += `
+
+            <hr>
+
+            <p>
+                <strong>
+                    ${
+                        currentLanguage === "en"
+                            ? "Food subtotal"
+                            : "餐点小计"
+                    }:
+                </strong>
+
+                RM ${subtotal.toFixed(2)}
+            </p>
+
+            <p>
+                <strong>
+                    ${
+                        currentLanguage === "en"
+                            ? "Delivery"
+                            : "配送费"
+                    }:
+                </strong>
+
+                ${
+                    deliveryEstimate !== null
+                        ? `RM ${deliveryEstimate.toFixed(2)}`
+                        : (
+                            currentLanguage === "en"
+                                ? "Pending quotation"
+                                : "等待报价"
+                        )
+                }
+            </p>
+
+        `;
+
+
+        finalOrderSummary.innerHTML =
+            summaryHTML;
+
+
+        orderConfirmation
+            .classList
+            .remove("hidden");
+
+
+        orderConfirmation
+            .scrollIntoView({
+
+                behavior: "smooth"
+
+            });
+
+    });
+
+
+    /* =========================
+       LANGUAGE TOGGLE
+    ========================= */
 
     document
         .getElementById("languageToggle")
@@ -445,1842 +836,109 @@ document.addEventListener("DOMContentLoaded", function () {
                     : "en";
 
 
-            updateLanguage();
+            document
+                .querySelectorAll("[data-en]")
+                .forEach(function (element) {
+
+                    element.textContent =
+
+                        currentLanguage === "en"
+
+                            ? element.dataset.en
+
+                            : element.dataset.zh;
+
+                });
 
 
-            renderMenu(currentMenu);
+            this.textContent =
+
+                currentLanguage === "en"
+
+                    ? "中文"
+
+                    : "EN";
 
 
-            renderOrder();
+            renderMenu();
 
+            renderCart();
 
         });
 
 
     /* =========================
        DARK MODE
-    ========================== */
+    ========================= */
+
+    document
+        .getElementById("darkModeToggle")
+        .addEventListener("click", function () {
 
 
-    const themeToggle =
-        document.getElementById("themeToggle");
+            document
+                .body
+                .classList
+                .toggle("dark-mode");
 
 
-    const savedTheme =
-        localStorage.getItem(
-            "houseOfCocoTheme"
-        );
+            const darkModeEnabled =
+                document
+                    .body
+                    .classList
+                    .contains("dark-mode");
 
 
-    if (savedTheme === "dark") {
-
-
-        document.body.classList.add(
-            "dark-mode"
-        );
-
-
-        themeToggle.textContent =
-            "☀";
-
-
-    }
-
-
-    themeToggle.addEventListener(
-        "click",
-        function () {
-
-
-            document.body.classList.toggle(
-                "dark-mode"
-            );
-
-
-            const isDark =
-                document.body.classList.contains(
-                    "dark-mode"
-                );
-
-
-            themeToggle.textContent =
-                isDark
-                    ? "☀"
-                    : "☾";
+            this.textContent =
+                darkModeEnabled
+                    ? "☀️"
+                    : "🌙";
 
 
             localStorage.setItem(
-                "houseOfCocoTheme",
-                isDark
-                    ? "dark"
-                    : "light"
+
+                "houseOfCocoDarkMode",
+
+                darkModeEnabled
+
             );
-
-
-        }
-    );
-
-
-    /* =========================
-       MENU DATA
-    ========================== */
-
-
-    const menus = {
-
-
-        week20: {
-
-
-            week:
-                "20 JUL — 24 JUL 2026",
-
-
-            featured: {
-
-
-                name:
-                    "Mongolian Chicken",
-
-
-                nameChinese:
-                    "蒙古鸡",
-
-
-                price:
-                    12.00,
-
-
-                image:
-                    "images/menu-20-7.jpg"
-
-
-            },
-
-
-            items: [
-
-
-                {
-
-
-                    id:
-                        201,
-
-
-                    day:
-                        "MON",
-
-
-                    dayChinese:
-                        "星期一",
-
-
-                    name:
-                        "Mongolian Chicken",
-
-
-                    nameChinese:
-                        "蒙古鸡",
-
-
-                    category:
-                        "MONDAY MENU",
-
-
-                    description:
-                        "Tomato Scrambled Egg • Daily Seasonal Vegetables • Barley Water (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-20-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        202,
-
-
-                    day:
-                        "TUE",
-
-
-                    dayChinese:
-                        "星期二",
-
-
-                    name:
-                        "Sweet and Sour Pork",
-
-
-                    nameChinese:
-                        "咕佬肉",
-
-
-                    category:
-                        "TUESDAY MENU",
-
-
-                    description:
-                        "Dried Radish Tofu • Daily Seasonal Vegetables • Old Cucumber Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-20-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        203,
-
-
-                    day:
-                        "WED",
-
-
-                    dayChinese:
-                        "星期三",
-
-
-                    name:
-                        "Braised Chicken with Beancurd Stick",
-
-
-                    nameChinese:
-                        "腐竹焖鸡",
-
-
-                    category:
-                        "WEDNESDAY MENU",
-
-
-                    description:
-                        "Scallion Omelette • Daily Seasonal Vegetables • Luo Han Guo Drink (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-20-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        204,
-
-
-                    day:
-                        "THU",
-
-
-                    dayChinese:
-                        "星期四",
-
-
-                    name:
-                        "Thai Basil Pork",
-
-
-                    nameChinese:
-                        "打抛猪肉",
-
-
-                    category:
-                        "THURSDAY MENU",
-
-
-                    description:
-                        "Fried Egg • Daily Seasonal Vegetables • Radish Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-20-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        205,
-
-
-                    day:
-                        "FRI",
-
-
-                    dayChinese:
-                        "星期五",
-
-
-                    name:
-                        "Curry Chicken",
-
-
-                    nameChinese:
-                        "咖喱鸡",
-
-
-                    category:
-                        "FRIDAY MENU",
-
-
-                    description:
-                        "Radish Shredded Omelette • Daily Seasonal Vegetables • Green Bean Dessert (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-20-7.jpg"
-
-
-                }
-
-
-            ]
-
-
-        },
-
-
-        week13: {
-
-
-            week:
-                "13 JUL — 17 JUL 2026",
-
-
-            featured: {
-
-
-                name:
-                    "Garlic Honey Fried Chicken",
-
-
-                nameChinese:
-                    "蒜香蜂蜜炸鸡",
-
-
-                price:
-                    12.00,
-
-
-                image:
-                    "images/menu-13-7.jpg"
-
-
-            },
-
-
-            items: [
-
-
-                {
-
-
-                    id:
-                        131,
-
-
-                    day:
-                        "MON",
-
-
-                    dayChinese:
-                        "星期一",
-
-
-                    name:
-                        "Garlic Honey Fried Chicken",
-
-
-                    nameChinese:
-                        "蒜香蜂蜜炸鸡",
-
-
-                    category:
-                        "MONDAY MENU",
-
-
-                    description:
-                        "Mapo Tofu • Daily Seasonal Vegetables • Seaweed Egg Drop Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-13-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        132,
-
-
-                    day:
-                        "TUE",
-
-
-                    dayChinese:
-                        "星期二",
-
-
-                    name:
-                        "Japanese Style Onion Chicken",
-
-
-                    nameChinese:
-                        "日式洋葱鸡",
-
-
-                    category:
-                        "TUESDAY MENU",
-
-
-                    description:
-                        "Korean Glass Noodle Salad • Daily Seasonal Vegetables • Chrysanthemum Tea (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-13-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        133,
-
-
-                    day:
-                        "WED",
-
-
-                    dayChinese:
-                        "星期三",
-
-
-                    name:
-                        "Braised Pork Ribs with Doubanjiang",
-
-
-                    nameChinese:
-                        "豆瓣酱焖排骨",
-
-
-                    category:
-                        "WEDNESDAY MENU",
-
-
-                    description:
-                        "Fried Egg • Daily Seasonal Vegetables • Barley Water (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-13-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        134,
-
-
-                    day:
-                        "THU",
-
-
-                    dayChinese:
-                        "星期四",
-
-
-                    name:
-                        "Stir-Fried Pork with Ginger & Scallion",
-
-
-                    nameChinese:
-                        "姜葱猪肉",
-
-
-                    category:
-                        "THURSDAY MENU",
-
-
-                    description:
-                        "Yu Xiang Style Scrambled Egg • Daily Seasonal Vegetables • Lotus Root Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-13-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        135,
-
-
-                    day:
-                        "FRI",
-
-
-                    dayChinese:
-                        "星期五",
-
-
-                    name:
-                        "Braised Chicken with Mushroom",
-
-
-                    nameChinese:
-                        "蘑菇焖鸡",
-
-
-                    category:
-                        "FRIDAY MENU",
-
-
-                    description:
-                        "Stir-Fried Green Beans with Egg • Daily Seasonal Vegetables • Red Bean Dessert (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-13-7.jpg"
-
-
-                }
-
-
-            ]
-
-
-        },
-
-
-        week6: {
-
-
-            week:
-                "6 JUL — 10 JUL 2026",
-
-
-            featured: {
-
-
-                name:
-                    "Creamy Butter Chicken",
-
-
-                nameChinese:
-                    "金丝奶油鸡",
-
-
-                price:
-                    12.00,
-
-
-                image:
-                    "images/menu-6-7.jpg"
-
-
-            },
-
-
-            items: [
-
-
-                {
-
-
-                    id:
-                        61,
-
-
-                    day:
-                        "MON",
-
-
-                    dayChinese:
-                        "星期一",
-
-
-                    name:
-                        "Creamy Butter Chicken",
-
-
-                    nameChinese:
-                        "金丝奶油鸡",
-
-
-                    category:
-                        "MONDAY MENU",
-
-
-                    description:
-                        "Soybean Scrambled Egg • Daily Seasonal Vegetables • Cabbage Fish Ball Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-6-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        62,
-
-
-                    day:
-                        "TUE",
-
-
-                    dayChinese:
-                        "星期二",
-
-
-                    name:
-                        "Salt & Pepper Stir-Fried Pork Slices",
-
-
-                    nameChinese:
-                        "椒盐炒猪肉片",
-
-
-                    category:
-                        "TUESDAY MENU",
-
-
-                    description:
-                        "Scallion Oil Tofu • Daily Seasonal Vegetables • Old Cucumber Soup (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-6-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        63,
-
-
-                    day:
-                        "WED",
-
-
-                    dayChinese:
-                        "星期三",
-
-
-                    name:
-                        "Japanese Style Curry Chicken",
-
-
-                    nameChinese:
-                        "日式咖喱鸡",
-
-
-                    category:
-                        "WEDNESDAY MENU",
-
-
-                    description:
-                        "Fried Egg • Daily Seasonal Vegetables • Chrysanthemum Tea (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-6-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        64,
-
-
-                    day:
-                        "THU",
-
-
-                    dayChinese:
-                        "星期四",
-
-
-                    name:
-                        "Braised Chicken with White Radish",
-
-
-                    nameChinese:
-                        "白萝卜焖鸡",
-
-
-                    category:
-                        "THURSDAY MENU",
-
-
-                    description:
-                        "Onion Omelette • Daily Seasonal Vegetables • Green Bean Dessert (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-6-7.jpg"
-
-
-                },
-
-
-                {
-
-
-                    id:
-                        65,
-
-
-                    day:
-                        "FRI",
-
-
-                    dayChinese:
-                        "星期五",
-
-
-                    name:
-                        "Taro Stewed Pork",
-
-
-                    nameChinese:
-                        "芋头炖猪肉",
-
-
-                    category:
-                        "FRIDAY MENU",
-
-
-                    description:
-                        "Dried Radish Omelette • Daily Seasonal Vegetables • Luo Han Guo Drink (FREE)",
-
-
-                    price:
-                        12.00,
-
-
-                    image:
-                        "images/menu-6-7.jpg"
-
-
-                }
-
-
-            ]
-
-
-        }
-
-
-    };
-
-
-    /* =========================
-       ORDER STATE
-    ========================== */
-
-
-    let currentMenu =
-        "week20";
-
-
-    let order =
-        [];
-
-
-    /* =========================
-       RENDER MENU
-    ========================== */
-
-
-    function renderMenu(menuKey) {
-
-
-        const menu =
-            menus[menuKey];
-
-
-        currentMenu =
-            menuKey;
-
-
-        document
-            .getElementById("menuWeek")
-            .textContent =
-                menu.week;
-
-
-        document
-            .getElementById("featuredMealName")
-            .textContent =
-                currentLanguage === "zh"
-                    ? menu.featured.nameChinese
-                    : menu.featured.name;
-
-
-        document
-            .getElementById("featuredMealPrice")
-            .textContent =
-                "RM " +
-                menu.featured.price.toFixed(2);
-
-
-        document
-            .getElementById("featuredMealImage")
-            .src =
-                menu.featured.image;
-
-
-        const menuGrid =
-            document.getElementById(
-                "menuGrid"
-            );
-
-
-        menuGrid.innerHTML =
-            "";
-
-
-        menu.items.forEach(function (item) {
-
-
-            const card =
-                document.createElement(
-                    "article"
-                );
-
-
-            card.className =
-                "menu-card";
-
-
-            card.innerHTML = `
-
-
-                <div class="menu-card-image">
-
-
-                    <img
-
-                        src="${item.image}"
-
-                        alt="${item.name}"
-
-                    >
-
-
-                </div>
-
-
-                <div class="menu-card-content">
-
-
-                    <div class="menu-day">
-
-
-                        <strong>
-
-                            ${item.day}
-
-                        </strong>
-
-
-                        <span>
-
-                            ${item.dayChinese}
-
-                        </span>
-
-
-                    </div>
-
-
-                    <span class="menu-card-category">
-
-
-                        ${item.category}
-
-
-                    </span>
-
-
-                    <h3>
-
-
-                        ${
-                            currentLanguage === "zh"
-
-                                ? item.nameChinese
-
-                                : item.name
-
-                        }
-
-
-                    </h3>
-
-
-                    <p class="menu-name-chinese">
-
-
-                        ${
-                            currentLanguage === "zh"
-
-                                ? item.name
-
-                                : item.nameChinese
-
-                        }
-
-
-                    </p>
-
-
-                    <p class="menu-card-description">
-
-
-                        ${item.description}
-
-
-                    </p>
-
-
-                    <div class="menu-card-bottom">
-
-
-                        <strong class="menu-card-price">
-
-
-                            RM ${item.price.toFixed(2)}
-
-
-                        </strong>
-
-
-                        <button
-
-                            class="add-button"
-
-                            data-id="${item.id}"
-
-                        >
-
-
-                            ${
-
-                                currentLanguage === "zh"
-
-                                    ? "添加 +"
-
-                                    : "Add +"
-
-                            }
-
-
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-
-
-            `;
-
-
-            menuGrid.appendChild(card);
-
 
         });
 
 
-        document
-            .querySelectorAll(".add-button")
-            .forEach(function (button) {
-
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const itemId =
-                            Number(
-                                this.dataset.id
-                            );
-
-
-                        addToOrder(itemId);
-
-
-                    }
-                );
-
-
-            });
-
-
-        updateAdminStatus(
-            menuKey
-        );
-
-
-    }
-
-
     /* =========================
-       ADD TO ORDER
-    ========================== */
+       LOAD SAVED DARK MODE
+    ========================= */
 
+    if (
 
-    function addToOrder(itemId) {
+        localStorage
+            .getItem("houseOfCocoDarkMode")
 
+            === "true"
 
-        const item =
-            Object
-                .values(menus)
-                .flatMap(
-                    menu =>
-                        menu.items
-                )
-                .find(
-                    item =>
-                        item.id === itemId
-                );
-
-
-        const existingItem =
-            order.find(
-                orderItem =>
-                    orderItem.id === itemId
-            );
-
-
-        if (existingItem) {
-
-
-            existingItem.quantity += 1;
-
-
-        } else {
-
-
-            order.push({
-
-
-                ...item,
-
-
-                quantity:
-                    1
-
-
-            });
-
-
-        }
-
-
-        renderOrder();
-
-
-        document
-            .getElementById("order")
-            .scrollIntoView({
-
-
-                behavior:
-                    "smooth"
-
-
-            });
-
-
-    }
-
-
-    /* =========================
-       RENDER ORDER
-    ========================== */
-
-
-    function renderOrder() {
-
-
-        const orderItems =
-            document
-                .getElementById(
-                    "orderItems"
-                );
-
-
-        const orderTotal =
-            document
-                .getElementById(
-                    "orderTotal"
-                );
-
-
-        if (
-            order.length === 0
-        ) {
-
-
-            orderItems.innerHTML = `
-
-
-                <p class="empty-order">
-
-
-                    ${
-                        currentLanguage === "zh"
-
-                            ? "从菜单选择食物开始。"
-
-                            : "Select something from the menu to get started."
-
-                    }
-
-
-                </p>
-
-
-            `;
-
-
-            orderTotal.textContent =
-                "RM 0.00";
-
-
-            return;
-
-
-        }
-
-
-        orderItems.innerHTML =
-            "";
-
-
-        let total =
-            0;
-
-
-        order.forEach(function (item) {
-
-
-            const itemTotal =
-                item.price *
-                item.quantity;
-
-
-            total +=
-                itemTotal;
-
-
-            const orderLine =
-                document.createElement(
-                    "div"
-                );
-
-
-            orderLine.className =
-                "order-line";
-
-
-            orderLine.innerHTML = `
-
-
-                <div class="order-line-name">
-
-
-                    <strong>
-
-
-                        ${
-
-                            currentLanguage === "zh"
-
-                                ? item.nameChinese
-
-                                : item.name
-
-                        }
-
-
-                    </strong>
-
-
-                    <span>
-
-
-                        RM ${item.price.toFixed(2)} each
-
-
-                    </span>
-
-
-                </div>
-
-
-                <div class="quantity-controls">
-
-
-                    <button data-action="decrease">
-
-
-                        −
-
-
-                    </button>
-
-
-                    <span>
-
-
-                        ${item.quantity}
-
-
-                    </span>
-
-
-                    <button data-action="increase">
-
-
-                        +
-
-
-                    </button>
-
-
-                </div>
-
-
-            `;
-
-
-            orderLine
-                .querySelector(
-                    '[data-action="decrease"]'
-                )
-                .addEventListener(
-                    "click",
-                    function () {
-
-
-                        item.quantity -=
-                            1;
-
-
-                        if (
-                            item.quantity <=
-                            0
-                        ) {
-
-
-                            order =
-                                order.filter(
-                                    orderItem =>
-                                        orderItem.id !==
-                                        item.id
-                                );
-
-
-                        }
-
-
-                        renderOrder();
-
-
-                    }
-                );
-
-
-            orderLine
-                .querySelector(
-                    '[data-action="increase"]'
-                )
-                .addEventListener(
-                    "click",
-                    function () {
-
-
-                        item.quantity +=
-                            1;
-
-
-                        renderOrder();
-
-
-                    }
-                );
-
-
-            orderItems.appendChild(
-                orderLine
-            );
-
-
-        });
-
-
-        orderTotal.textContent =
-            "RM " +
-            total.toFixed(2);
-
-
-    }
-
-
-    /* =========================
-       CLEAR ORDER
-    ========================== */
-
-
-    document
-        .getElementById(
-            "clearOrder"
-        )
-        .addEventListener(
-            "click",
-            function () {
-
-
-                order =
-                    [];
-
-
-                renderOrder();
-
-
-            }
-        );
-
-
-    /* =========================
-       DELIVERY ESTIMATION
-    ========================== */
-
-
-    const addressInput =
-        document
-            .getElementById(
-                "deliveryAddress"
-            );
-
-
-    addressInput
-        .addEventListener(
-            "input",
-            function () {
-
-
-                const address =
-                    this.value
-                        .trim()
-                        .toLowerCase();
-
-
-                const deliveryFee =
-                    document
-                        .getElementById(
-                            "deliveryFee"
-                        );
-
-
-                if (
-                    address.length <
-                    8
-                ) {
-
-
-                    deliveryFee.textContent =
-                        currentLanguage === "zh"
-
-                            ? "请输入地址"
-
-                            : "Enter your address";
-
-
-                    return;
-
-
-                }
-
-
-                let estimatedFee =
-                    12;
-
-
-                if (
-
-
-                    address.includes(
-                        "seremban"
-                    )
-
-
-                    ||
-
-
-                    address.includes(
-                        "seremban 2"
-                    )
-
-
-                    ||
-
-
-                    address.includes(
-                        "s2"
-                    )
-
-
-                ) {
-
-
-                    estimatedFee =
-                        8;
-
-
-                }
-
-
-                else if (
-
-
-                    address.includes(
-                        "nilai"
-                    )
-
-
-                ) {
-
-
-                    estimatedFee =
-                        15;
-
-
-                }
-
-
-                else if (
-
-
-                    address.includes(
-                        "kuala lumpur"
-                    )
-
-
-                    ||
-
-
-                    address.includes(
-                        "kl"
-                    )
-
-
-                ) {
-
-
-                    estimatedFee =
-                        30;
-
-
-                }
-
-
-                deliveryFee.textContent =
-
-
-                    currentLanguage === "zh"
-
-
-                        ? "预计 RM " +
-                          estimatedFee.toFixed(2)
-
-
-                        : "From RM " +
-                          estimatedFee.toFixed(2);
-
-
-            }
-        );
-
-
-    /* =========================
-       MENU SWITCHER
-    ========================== */
-
-
-    document
-        .querySelectorAll(
-            ".menu-switch-button"
-        )
-        .forEach(
-            function (button) {
-
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const selectedMenu =
-                            this.dataset.menu;
-
-
-                        document
-                            .querySelectorAll(
-                                ".menu-switch-button"
-                            )
-                            .forEach(
-                                function (
-                                    btn
-                                ) {
-
-
-                                    btn.classList
-                                        .remove(
-                                            "active"
-                                        );
-
-
-                                }
-                            );
-
-
-                        this.classList.add(
-                            "active"
-                        );
-
-
-                        order =
-                            [];
-
-
-                        renderMenu(
-                            selectedMenu
-                        );
-
-
-                        renderOrder();
-
-
-                    }
-                );
-
-
-            }
-        );
-
-
-    function updateAdminStatus(
-        menuKey
     ) {
 
-
-        const status =
-            document
-                .getElementById(
-                    "adminStatusText"
-                );
+        document
+            .body
+            .classList
+            .add("dark-mode");
 
 
-        const menu =
-            menus[menuKey];
-
-
-        status.textContent =
-
-
-            currentLanguage === "zh"
-
-
-                ? menu.week +
-                  " 菜单目前正在使用"
-
-
-                : menu.week +
-                  " menu is currently live";
-
+        document
+            .getElementById("darkModeToggle")
+            .textContent = "☀️";
 
     }
 
 
     /* =========================
-       ORDER FORM
-    ========================== */
+       INITIAL RENDER
+    ========================= */
 
+    renderMenu();
 
-    document
-        .getElementById(
-            "orderForm"
-        )
-        .addEventListener(
-            "submit",
-            function (event) {
-
-
-                event.preventDefault();
-
-
-                if (
-                    order.length ===
-                    0
-                ) {
-
-
-                    alert(
-
-
-                        currentLanguage === "zh"
-
-
-                            ? "请至少选择一项菜单。"
-
-
-                            : "Please select at least one item from the menu."
-
-
-                    );
-
-
-                    return;
-
-
-                }
-
-
-                const name =
-                    document
-                        .getElementById(
-                            "customerName"
-                        )
-                        .value;
-
-
-                const phone =
-                    document
-                        .getElementById(
-                            "customerPhone"
-                        )
-                        .value;
-
-
-                const address =
-                    document
-                        .getElementById(
-                            "deliveryAddress"
-                        )
-                        .value;
-
-
-                let message =
-
-
-                    "Hello House of Coco!%0A%0A";
-
-
-                message +=
-
-
-                    "I would like to place an order.%0A%0A";
-
-
-                message +=
-
-
-                    "Name: " +
-                    name +
-                    "%0A";
-
-
-                message +=
-
-
-                    "WhatsApp: " +
-                    phone +
-                    "%0A";
-
-
-                message +=
-
-
-                    "Delivery Address: " +
-                    address +
-                    "%0A%0A";
-
-
-                message +=
-
-
-                    "ORDER:%0A";
-
-
-                order.forEach(
-                    function (item) {
-
-
-                        message +=
-
-
-                            item.name +
-                            " x " +
-                            item.quantity +
-                            " - RM " +
-                            (
-                                item.price *
-                                item.quantity
-                            ).toFixed(
-                                2
-                            ) +
-                            "%0A";
-
-
-                    }
-                );
-
-
-                const whatsappNumber =
-                    "60123456789";
-
-
-                const whatsappURL =
-
-
-                    "https://wa.me/" +
-                    whatsappNumber +
-                    "?text=" +
-                    message;
-
-
-                window.open(
-                    whatsappURL,
-                    "_blank"
-                );
-
-
-            }
-        );
-
-
-    /* =========================
-       INITIALISE
-    ========================== */
-
-
-    renderMenu(
-        "week20"
-    );
-
-
-    renderOrder();
-
-
-    updateLanguage();
+    renderCart();
 
 
 });
