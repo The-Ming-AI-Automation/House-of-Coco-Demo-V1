@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>House of Coco | Homemade Meals</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="brand">
+            <div class="brand-mark">HC</div>
+
+            <div class="brand-text">
+                <strong>HOUSE OF COCO</strong>
+                <span data-i18n="brandSubtitle">Homemade meals for busy people</span>
+            </div>
+        </div>
+
+        <nav class="desktop-nav">
+            <a href="#menu" data-i18n="navMenu">This Week's Menu</a>
+            <a href="#how-it-works" data-i18n="navHow">How It Works</a>
+        </nav>
+
+        <div class="header-actions">
+
+            <button class="language-toggle" id="languageToggle">
+                <span id="languageLabel">EN</span>
+            </button>
+
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                ☾
+            </button>
+
+            <a href="#menu" class="header-order-button" data-i18n="orderNow">
+                Order Now
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    <span data-i18n="eyebrow">WEEKLY HOMEMADE MEALS</span>
+                </div>
+
+                <h1 data-i18n="heroTitle">
+                    A proper meal.<br>
+                    Without the cooking.
+                </h1>
+
+                <p data-i18n="heroDescription">
+                    Homemade food prepared for busy people who want something comforting, convenient, and delicious.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#menu" class="primary-button" data-i18n="viewMenu">
+                        View This Week's Menu →
+                    </a>
+
+                    <a href="#how-it-works" class="secondary-button" data-i18n="learnMore">
+                        How It Works
+                    </a>
+
+                </div>
+
+                <div class="hero-note">
+                    <span>✦</span>
+                    <span data-i18n="heroNote">
+                        Fresh menus updated weekly
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <div class="hero-card">
+
+                    <div class="hero-card-top">
+                        <span data-i18n="featuredThisWeek">FEATURED THIS WEEK</span>
+                        <span class="status-badge">
+                            <span></span>
+                            <span data-i18n="available">AVAILABLE</span>
+                        </span>
+                    </div>
+
+                    <div class="hero-food-image">
+                        <img src="images/featured-meal.jpg" alt="Featured homemade meal">
+                    </div>
+
+                    <div class="hero-food-info">
+
+                        <div>
+                            <span class="food-category" data-i18n="homemadeMeal">
+                                HOMEMADE MEAL
+                            </span>
+
+                            <h3 id="featuredMealName">
+                                Chicken Bento Set
+                            </h3>
+                        </div>
+
+                        <strong id="featuredMealPrice">
+                            RM 12.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MENU SECTION
+        ========================== -->
+
+        <section class="menu-section" id="menu">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        <span data-i18n="menuEyebrow">CURRENT MENU</span>
+                    </div>
+
+                    <h2 data-i18n="menuTitle">
+                        This week's menu.
+                    </h2>
+
+                    <p data-i18n="menuDescription">
+                        Choose what you'd like, tell us where to deliver, and we'll take care of the rest.
+                    </p>
+
+                </div>
+
+                <div class="menu-week">
+
+                    <span data-i18n="weekOf">
+                        WEEK OF
+                    </span>
+
+                    <strong id="menuWeek">
+                        20 JUL — 26 JUL 2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="menu-grid" id="menuGrid">
+
+                <!-- Menu items generated by JavaScript -->
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ORDER PANEL
+        ========================== -->
+
+        <section class="order-section" id="order">
+
+            <div class="order-container">
+
+                <div class="order-intro">
+
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        <span data-i18n="orderEyebrow">YOUR ORDER</span>
+                    </div>
+
+                    <h2 data-i18n="orderTitle">
+                        Almost there.
+                    </h2>
+
+                    <p data-i18n="orderDescription">
+                        Tell us what you would like and where you would like it delivered.
+                    </p>
+
+                </div>
+
+
+                <form id="orderForm" class="order-form">
+
+                    <div class="form-group">
+
+                        <label for="customerName" data-i18n="nameLabel">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="e.g. Sarah"
+                            data-i18n-placeholder="namePlaceholder"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="customerPhone" data-i18n="phoneLabel">
+                            WhatsApp Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="e.g. 012 345 6789"
+                            data-i18n-placeholder="phonePlaceholder"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group full-width">
+
+                        <label for="deliveryAddress" data-i18n="addressLabel">
+                            Delivery Address
+                        </label>
+
+                        <textarea
+                            id="deliveryAddress"
+                            rows="3"
+                            placeholder="Enter your delivery address"
+                            data-i18n-placeholder="addressPlaceholder"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="delivery-estimate">
+
+                        <div class="delivery-icon">
+                            ⌖
+                        </div>
+
+                        <div>
+
+                            <span data-i18n="deliveryEstimate">
+                                Estimated delivery fee
+                            </span>
+
+                            <strong id="deliveryFee">
+                                Enter your address
+                            </strong>
+
+                            <small data-i18n="deliveryNote">
+                                Final delivery fee may vary depending on the actual Lalamove quotation.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="order-summary">
+
+                        <div class="summary-header">
+
+                            <h3 data-i18n="summaryTitle">
+                                Your order
+                            </h3>
+
+                            <button
+                                type="button"
+                                id="clearOrder"
+                                data-i18n="clearOrder"
+                            >
+                                Clear
+                            </button>
+
+                        </div>
+
+                        <div id="orderItems">
+
+                            <p class="empty-order" data-i18n="emptyOrder">
+                                Select something from the menu to get started.
+                            </p>
+
+                        </div>
+
+
+                        <div class="summary-total">
+
+                            <span data-i18n="estimatedTotal">
+                                Estimated Total
+                            </span>
+
+                            <strong id="orderTotal">
+                                RM 0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-order-button"
+                        data-i18n="submitOrder"
+                    >
+                        Continue to WhatsApp →
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HOW IT WORKS
+        ========================== -->
+
+        <section class="how-section" id="how-it-works">
+
+            <div class="section-heading centered">
+
+                <div class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    <span data-i18n="howEyebrow">HOW IT WORKS</span>
+                </div>
+
+                <h2 data-i18n="howTitle">
+                    Simple from craving<br>
+                    to delivery.
+                </h2>
+
+            </div>
+
+
+            <div class="steps-grid">
+
+                <div class="step-card">
+
+                    <span class="step-number">01</span>
+
+                    <div class="step-icon">
+                        ◉
+                    </div>
+
+                    <h3 data-i18n="stepOneTitle">
+                        Choose your meal
+                    </h3>
+
+                    <p data-i18n="stepOneDescription">
+                        Browse this week's homemade menu and select what you would like.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">02</span>
+
+                    <div class="step-icon">
+                        ✦
+                    </div>
+
+                    <h3 data-i18n="stepTwoTitle">
+                        Tell us where
+                    </h3>
+
+                    <p data-i18n="stepTwoDescription">
+                        Enter your delivery address and receive an estimated delivery fee.
+                    </p>
+
+                </div>
+
+
+                <div class="step-card">
+
+                    <span class="step-number">03</span>
+
+                    <div class="step-icon">
+                        →
+                    </div>
+
+                    <h3 data-i18n="stepThreeTitle">
+                        We prepare the rest
+                    </h3>
+
+                    <p data-i18n="stepThreeDescription">
+                        Confirm your order and we will prepare your meal for delivery.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ADMIN DEMO PANEL
+        ========================== -->
+
+        <section class="admin-demo-section">
+
+            <div class="admin-demo-container">
+
+                <div class="admin-demo-heading">
+
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        DEMO FEATURE
+                    </div>
+
+                    <h2>
+                        Change the entire<br>
+                        weekly menu in one click.
+                    </h2>
+
+                    <p>
+                        This is the feature designed specifically for a weekly-changing menu business.
+                    </p>
+
+                </div>
+
+
+                <div class="menu-switcher">
+
+                    <button
+                        class="menu-switch-button active"
+                        data-menu="week1"
+                    >
+                        Week 1
+                    </button>
+
+                    <button
+                        class="menu-switch-button"
+                        data-menu="week2"
+                    >
+                        Week 2
+                    </button>
+
+                    <button
+                        class="menu-switch-button"
+                        data-menu="week3"
+                    >
+                        Week 3
+                    </button>
+
+                </div>
+
+
+                <div class="admin-status">
+
+                    <span class="status-dot"></span>
+
+                    <span id="adminStatusText">
+                        Week 1 menu is currently live
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-brand">
+
+            <div class="brand-mark">
+                HC
+            </div>
+
+            <div>
+
+                <strong>
+                    HOUSE OF COCO
+                </strong>
+
+                <span data-i18n="footerText">
+                    Homemade meals for busy people.
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <a href="#menu" data-i18n="footerOrder">
+                Order This Week's Menu
+            </a>
+
+            <span>
+                © 2026 House of Coco
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
