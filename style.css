@@ -5,27 +5,35 @@
 :root {
 
     --bg: #f5f3ef;
+
     --surface: #ffffff;
+
     --surface-soft: #ebe8e1;
 
     --text: #181818;
+
     --text-soft: #6d6b66;
 
     --border: rgba(24, 24, 24, 0.12);
 
     --accent: #8b2e2e;
+
     --accent-dark: #641f1f;
 
     --success: #587d5c;
 
     --serif: "Playfair Display", serif;
+
     --sans: "DM Sans", sans-serif;
 
     --radius-small: 12px;
+
     --radius-medium: 22px;
+
     --radius-large: 32px;
 
     --transition: 0.3s ease;
+
 }
 
 
@@ -36,15 +44,19 @@
 body.dark-mode {
 
     --bg: #101010;
+
     --surface: #181818;
+
     --surface-soft: #222222;
 
     --text: #f4f1eb;
+
     --text-soft: #a6a29b;
 
     --border: rgba(255, 255, 255, 0.12);
 
     --accent: #bd6464;
+
     --accent-dark: #8f3c3c;
 
 }
@@ -57,6 +69,7 @@ body.dark-mode {
 * {
 
     margin: 0;
+
     padding: 0;
 
     box-sizing: border-box;
@@ -80,7 +93,9 @@ body {
     font-family: var(--sans);
 
     transition:
+
         background var(--transition),
+
         color var(--transition);
 
 }
@@ -96,7 +111,9 @@ a {
 
 
 button,
+
 input,
+
 textarea {
 
     font-family: inherit;
@@ -233,6 +250,7 @@ textarea {
 
 
 .language-toggle,
+
 .theme-toggle {
 
     height: 40px;
@@ -257,6 +275,7 @@ textarea {
 
 
 .language-toggle:hover,
+
 .theme-toggle:hover {
 
     background: var(--surface-soft);
@@ -731,7 +750,11 @@ main {
 
     border-radius: var(--radius-medium);
 
-    transition: transform var(--transition), box-shadow var(--transition);
+    transition:
+
+        transform var(--transition),
+
+        box-shadow var(--transition);
 
 }
 
@@ -764,21 +787,59 @@ main {
 
     object-fit: cover;
 
-    transition: transform 0.5s ease;
-
-}
-
-
-.menu-card:hover img {
-
-    transform: scale(1.05);
-
 }
 
 
 .menu-card-content {
 
     padding: 22px;
+
+}
+
+
+.menu-day {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.menu-day strong {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 55px;
+
+    padding: 8px 12px;
+
+    background: var(--accent);
+
+    color: white;
+
+    border-radius: 100px;
+
+    font-size: 11px;
+
+    letter-spacing: 0.08em;
+
+}
+
+
+.menu-day span {
+
+    color: var(--text-soft);
+
+    font-size: 12px;
 
 }
 
@@ -800,14 +861,27 @@ main {
 
     font-family: var(--serif);
 
-    font-size: 26px;
+    font-size: 24px;
+
+}
+
+
+.menu-name-chinese {
+
+    margin-top: 5px;
+
+    color: var(--text-soft);
+
+    font-size: 14px;
 
 }
 
 
 .menu-card-description {
 
-    margin-top: 10px;
+    min-height: 65px;
+
+    margin-top: 12px;
 
     color: var(--text-soft);
 
@@ -965,6 +1039,7 @@ main {
 
 
 .form-group input,
+
 .form-group textarea {
 
     width: 100%;
@@ -983,12 +1058,11 @@ main {
 
     resize: vertical;
 
-    transition: border var(--transition);
-
 }
 
 
 .form-group input:focus,
+
 .form-group textarea:focus {
 
     border-color: var(--accent);
@@ -1252,8 +1326,6 @@ main {
 
     font-weight: 600;
 
-    transition: all var(--transition);
-
 }
 
 
@@ -1383,7 +1455,7 @@ main {
 
 
 /* =========================
-   ADMIN DEMO
+   MENU SWITCHER
 ========================= */
 
 .admin-demo-section {
@@ -1457,7 +1529,7 @@ main {
 
 .menu-switch-button {
 
-    min-width: 150px;
+    min-width: 160px;
 
     padding: 14px 20px;
 
@@ -1479,20 +1551,12 @@ main {
 
 
 .menu-switch-button:hover,
+
 .menu-switch-button.active {
 
     background: var(--bg);
 
     color: var(--text);
-
-}
-
-
-.admin-status {
-
-    position: absolute;
-
-    display: none;
 
 }
 
@@ -1581,6 +1645,7 @@ main {
 
 @media (max-width: 900px) {
 
+
     .desktop-nav {
 
         display: none;
@@ -1644,10 +1709,12 @@ main {
 
     }
 
+
 }
 
 
 @media (max-width: 600px) {
+
 
     .site-header {
 
@@ -1685,8 +1752,11 @@ main {
 
 
     .menu-section,
+
     .order-section,
+
     .how-section,
+
     .admin-demo-section {
 
         padding-left: 5vw;
@@ -1727,8 +1797,11 @@ main {
 
 
     .form-group.full-width,
+
     .delivery-estimate,
+
     .order-summary,
+
     .submit-order-button {
 
         grid-column: auto;
@@ -1761,5 +1834,6 @@ main {
         gap: 10px;
 
     }
+
 
 }
