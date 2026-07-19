@@ -1475,3 +1475,301 @@ textarea {
     }
 
 }
+/* =====================================================
+   PREMIUM FEATURED MENU HOVER EXPERIENCE
+===================================================== */
+
+.hero-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.6s ease;
+
+}
+
+
+.hero-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.16),
+            transparent 35%,
+            transparent 65%,
+            rgba(255,255,255,0.08)
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.5s ease;
+
+}
+
+
+.hero-card:hover {
+
+    transform: translateY(-10px) scale(1.015);
+
+    box-shadow:
+        0 35px 90px rgba(0, 0, 0, 0.18);
+
+}
+
+
+.hero-card:hover::after {
+
+    opacity: 1;
+
+}
+
+
+/* IMAGE */
+
+.hero-food-image {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+}
+
+
+.hero-food-image img {
+
+    transition:
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.6s ease;
+
+}
+
+
+.hero-card:hover .hero-food-image img {
+
+    transform: scale(1.08);
+
+    filter: brightness(0.72);
+
+}
+
+
+/* PREMIUM MENU OVERLAY */
+
+.hero-menu-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 5;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    padding: 30px;
+
+    color: white;
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+
+}
+
+
+.hero-card:hover .hero-menu-overlay {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+.hero-menu-overlay::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: -1;
+
+    background:
+
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.85),
+            rgba(0,0,0,0.25),
+            transparent 70%
+        );
+
+}
+
+
+.hero-menu-overlay-label {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    opacity: 0.75;
+
+    margin-bottom: 8px;
+
+}
+
+
+.hero-menu-overlay h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(28px, 3vw, 42px);
+
+    line-height: 1.05;
+
+    max-width: 520px;
+
+}
+
+
+.hero-menu-overlay p {
+
+    margin-top: 10px;
+
+    font-size: 13px;
+
+    opacity: 0.8;
+
+}
+
+
+.hero-menu-overlay-price {
+
+    margin-top: 18px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+}
+
+
+/* SMALL VIEW MENU INDICATOR */
+
+.hero-card::before {
+
+    content: "HOVER TO VIEW MENU";
+
+    position: absolute;
+
+    top: 62px;
+
+    right: 28px;
+
+    z-index: 10;
+
+    padding: 8px 12px;
+
+    border-radius: 999px;
+
+    background: rgba(0,0,0,0.5);
+
+    color: white;
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0;
+
+    transform: translateY(-8px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
+
+    pointer-events: none;
+
+}
+
+
+.hero-card:hover::before {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .hero-card {
+
+        cursor: default;
+
+    }
+
+
+    .hero-card:hover {
+
+        transform: none;
+
+    }
+
+
+    .hero-card:hover .hero-food-image img {
+
+        transform: none;
+
+        filter: brightness(0.72);
+
+    }
+
+
+    .hero-menu-overlay {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+
+    .hero-card::before {
+
+        display: none;
+
+    }
+
+}
