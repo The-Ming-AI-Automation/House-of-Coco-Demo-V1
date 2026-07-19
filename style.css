@@ -1,13 +1,17 @@
 :root {
 
     --bg: #f7f4ef;
+
     --surface: #ffffff;
+
     --surface-soft: #f0ede7;
 
     --text: #1e1e1c;
+
     --muted: #77756f;
 
     --accent: #1e4d3a;
+
     --accent-dark: #153b2c;
 
     --border: rgba(30, 30, 28, 0.12);
@@ -20,6 +24,7 @@
 * {
 
     margin: 0;
+
     padding: 0;
 
     box-sizing: border-box;
@@ -52,10 +57,13 @@ body {
 body.dark-mode {
 
     --bg: #151614;
+
     --surface: #20221f;
+
     --surface-soft: #292b27;
 
     --text: #f4f1ea;
+
     --muted: #aaa9a1;
 
     --border: rgba(255, 255, 255, 0.12);
@@ -510,7 +518,7 @@ h2 {
 
     gap: 30px;
 
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 
 }
 
@@ -550,6 +558,62 @@ h2 {
 }
 
 
+/* MENU ACTIONS */
+
+.menu-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.whole-week-button,
+
+.clear-days-button {
+
+    border-radius: 999px;
+
+    padding: 13px 20px;
+
+    font-family: inherit;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.whole-week-button {
+
+    border: none;
+
+    background: var(--accent);
+
+    color: white;
+
+}
+
+
+.clear-days-button {
+
+    border: 1px solid var(--border);
+
+    background: transparent;
+
+    color: var(--text);
+
+}
+
+
 /* MENU CARDS */
 
 .menu-grid {
@@ -573,7 +637,7 @@ h2 {
 
     padding: 22px;
 
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
 
 }
 
@@ -583,6 +647,15 @@ h2 {
     transform: translateY(-6px);
 
     box-shadow: var(--shadow);
+
+}
+
+
+.menu-card.selected {
+
+    border: 2px solid var(--accent);
+
+    box-shadow: 0 10px 35px rgba(30, 77, 58, 0.12);
 
 }
 
@@ -1254,6 +1327,17 @@ textarea {
 
 
 /* MOBILE */
+
+@media (max-width: 1100px) {
+
+    .menu-grid {
+
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+}
+
 
 @media (max-width: 900px) {
 
