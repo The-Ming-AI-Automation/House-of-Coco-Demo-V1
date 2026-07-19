@@ -2,174 +2,538 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       MENU DATA
-    ========================= */
+       TRANSLATIONS
+    ========================== */
 
-    const menuItems = [
+    const translations = {
 
-        {
-            id: 1,
+        en: {
 
-            day: "Monday",
+            brandSubtitle: "Homemade meals for busy people",
 
-            dayZh: "星期一",
+            navMenu: "This Week's Menu",
 
-            name: "Mongolian Chicken",
+            navHow: "How It Works",
 
-            nameZh: "蒙古鸡",
+            orderNow: "Order Now",
 
-            description: "Tender chicken with a rich and savoury sauce.",
+            eyebrow: "WEEKLY HOMEMADE MEALS",
 
-            descriptionZh: "嫩鸡肉搭配浓郁咸香的酱汁。",
+            heroTitle: "A proper meal.<br>Without the cooking.",
 
-            price: 12,
+            heroDescription: "Homemade food prepared for busy people who want something comforting, convenient, and delicious.",
 
-            image: "images/monday.jpg"
+            viewMenu: "View This Week's Menu →",
+
+            learnMore: "How It Works",
+
+            heroNote: "Fresh menus updated weekly",
+
+            featuredThisWeek: "FEATURED THIS WEEK",
+
+            available: "AVAILABLE",
+
+            homemadeMeal: "HOMEMADE MEAL",
+
+            menuEyebrow: "CURRENT MENU",
+
+            menuTitle: "This week's menu.",
+
+            menuDescription: "Choose what you'd like, tell us where to deliver, and we'll take care of the rest.",
+
+            weekOf: "WEEK OF",
+
+            orderEyebrow: "YOUR ORDER",
+
+            orderTitle: "Almost there.",
+
+            orderDescription: "Tell us what you would like and where you would like it delivered.",
+
+            nameLabel: "Your Name",
+
+            phoneLabel: "WhatsApp Number",
+
+            addressLabel: "Delivery Address",
+
+            deliveryEstimate: "Estimated delivery fee",
+
+            deliveryNote: "Final delivery fee may vary depending on the actual Lalamove quotation.",
+
+            getEstimate: "Get Lalamove Delivery Estimate",
+
+            summaryTitle: "Your order",
+
+            clearOrder: "Clear",
+
+            emptyOrder: "Select something from the menu to get started.",
+
+            estimatedTotal: "Estimated Total",
+
+            submitOrder: "Continue to WhatsApp →",
+
+            howEyebrow: "HOW IT WORKS",
+
+            howTitle: "Simple from craving<br>to delivery.",
+
+            stepOneTitle: "Choose your meal",
+
+            stepOneDescription: "Browse this week's homemade menu and select what you would like.",
+
+            stepTwoTitle: "Tell us where",
+
+            stepTwoDescription: "Enter your delivery address and receive an estimated delivery fee.",
+
+            stepThreeTitle: "We prepare the rest",
+
+            stepThreeDescription: "Confirm your order and we will prepare your meal for delivery.",
+
+            footerText: "Homemade meals for busy people.",
+
+            footerOrder: "Order This Week's Menu"
 
         },
 
-        {
-            id: 2,
 
-            day: "Tuesday",
+        zh: {
 
-            dayZh: "星期二",
+            brandSubtitle: "为忙碌生活准备的家常美食",
 
-            name: "Sweet and Sour Pork",
+            navMenu: "本周菜单",
 
-            nameZh: "咕噜肉",
+            navHow: "如何运作",
 
-            description: "Crispy pork with a sweet and tangy sauce.",
+            orderNow: "立即订购",
 
-            descriptionZh: "酥脆猪肉搭配酸甜酱汁。",
+            eyebrow: "每周家常美食",
 
-            price: 12,
+            heroTitle: "好好吃一顿饭。<br>不用自己煮。",
 
-            image: "images/tuesday.jpg"
+            heroDescription: "为忙碌的人准备的家常美食，方便、温暖又美味。",
 
-        },
+            viewMenu: "查看本周菜单 →",
 
-        {
-            id: 3,
+            learnMore: "如何运作",
 
-            day: "Wednesday",
+            heroNote: "菜单每周更新",
 
-            dayZh: "星期三",
+            featuredThisWeek: "本周精选",
 
-            name: "Braised Chicken",
+            available: "可订购",
 
-            nameZh: "焖鸡",
+            homemadeMeal: "家常美食",
 
-            description: "Comforting homemade braised chicken.",
+            menuEyebrow: "当前菜单",
 
-            descriptionZh: "充满家的味道的焖鸡。",
+            menuTitle: "本周菜单。",
 
-            price: 12,
+            menuDescription: "选择您想吃的餐点，告诉我们配送地址，剩下的交给我们。",
 
-            image: "images/wednesday.jpg"
+            weekOf: "本周",
 
-        },
+            orderEyebrow: "您的订单",
 
-        {
-            id: 4,
+            orderTitle: "快完成了。",
 
-            day: "Thursday",
+            orderDescription: "告诉我们您想吃什么，以及需要配送到哪里。",
 
-            dayZh: "星期四",
+            nameLabel: "您的姓名",
 
-            name: "Homemade Special",
+            phoneLabel: "WhatsApp号码",
 
-            nameZh: "家常特色菜",
+            addressLabel: "配送地址",
 
-            description: "A delicious homemade meal prepared fresh.",
+            deliveryEstimate: "预计配送费",
 
-            descriptionZh: "新鲜制作的美味家常餐。",
+            deliveryNote: "最终配送费用可能会根据实际 Lalamove 报价而有所不同。",
 
-            price: 12,
+            getEstimate: "获取 Lalamove 配送估价",
 
-            image: "images/thursday.jpg"
+            summaryTitle: "您的订单",
 
-        },
+            clearOrder: "清除",
 
-        {
-            id: 5,
+            emptyOrder: "请从菜单选择餐点开始。",
 
-            day: "Friday",
+            estimatedTotal: "预计总额",
 
-            dayZh: "星期五",
+            submitOrder: "继续前往 WhatsApp →",
 
-            name: "Weekly Special",
+            howEyebrow: "如何运作",
 
-            nameZh: "每周特色菜",
+            howTitle: "从想吃到送到家。<br>简单完成。",
 
-            description: "End the week with something delicious.",
+            stepOneTitle: "选择您的餐点",
 
-            descriptionZh: "用美味的家常菜结束这一周。",
+            stepOneDescription: "浏览本周家常菜单并选择您想吃的餐点。",
 
-            price: 12,
+            stepTwoTitle: "告诉我们地址",
 
-            image: "images/friday.jpg"
+            stepTwoDescription: "输入配送地址并获取预计配送费用。",
+
+            stepThreeTitle: "我们准备剩下的",
+
+            stepThreeDescription: "确认订单后，我们会准备您的餐点并安排配送。",
+
+            footerText: "为忙碌生活准备的家常美食。",
+
+            footerOrder: "订购本周菜单"
 
         }
 
-    ];
+    };
+
+
+    let currentLanguage = "en";
 
 
     /* =========================
-       STATE
-    ========================= */
+       MENU DATA
+    ========================== */
 
-    let cart = [];
+    const menus = {
 
-    let currentLanguage = "en";
+
+        week20: {
+
+            weekText: "20 JUL — 24 JUL 2026",
+
+            featured: {
+
+                name: "Mongolian Chicken",
+
+                nameZh: "蒙古鸡",
+
+                price: 12,
+
+                image: "images/menu-20-7.jpg"
+
+            },
+
+            items: [
+
+                {
+
+                    id: "20-mon",
+
+                    day: "MONDAY",
+
+                    dayZh: "星期一",
+
+                    name: "Mongolian Chicken",
+
+                    nameZh: "蒙古鸡",
+
+                    description: "Tender chicken cooked in a rich savoury sauce.",
+
+                    descriptionZh: "嫩鸡肉搭配浓郁咸香的酱汁。",
+
+                    price: 12,
+
+                    image: "images/menu-20-7.jpg"
+
+                },
+
+                {
+
+                    id: "20-tue",
+
+                    day: "TUESDAY",
+
+                    dayZh: "星期二",
+
+                    name: "Sweet & Sour Pork",
+
+                    nameZh: "咕噜肉",
+
+                    description: "Crispy pork with a sweet and tangy sauce.",
+
+                    descriptionZh: "酥脆猪肉搭配酸甜酱汁。",
+
+                    price: 12,
+
+                    image: "images/menu-21-7.jpg"
+
+                },
+
+                {
+
+                    id: "20-wed",
+
+                    day: "WEDNESDAY",
+
+                    dayZh: "星期三",
+
+                    name: "Homemade Chicken",
+
+                    nameZh: "家常鸡肉",
+
+                    description: "A comforting homemade meal prepared fresh.",
+
+                    descriptionZh: "新鲜制作的温暖家常餐。",
+
+                    price: 12,
+
+                    image: "images/menu-22-7.jpg"
+
+                },
+
+                {
+
+                    id: "20-thu",
+
+                    day: "THURSDAY",
+
+                    dayZh: "星期四",
+
+                    name: "House Special",
+
+                    nameZh: "家常特色菜",
+
+                    description: "A delicious homemade special for the week.",
+
+                    descriptionZh: "本周美味家常特色菜。",
+
+                    price: 12,
+
+                    image: "images/menu-23-7.jpg"
+
+                },
+
+                {
+
+                    id: "20-fri",
+
+                    day: "FRIDAY",
+
+                    dayZh: "星期五",
+
+                    name: "Weekly Special",
+
+                    nameZh: "每周特色菜",
+
+                    description: "End the week with something delicious.",
+
+                    descriptionZh: "用美味的家常菜结束这一周。",
+
+                    price: 12,
+
+                    image: "images/menu-24-7.jpg"
+
+                }
+
+            ]
+
+        },
+
+
+        week13: {
+
+            weekText: "13 JUL — 17 JUL 2026",
+
+            featured: {
+
+                name: "Weekly Special",
+
+                nameZh: "每周特色菜",
+
+                price: 12,
+
+                image: "images/menu-13-7.jpg"
+
+            },
+
+            items: [
+
+                {
+
+                    id: "13-mon",
+
+                    day: "MONDAY",
+
+                    dayZh: "星期一",
+
+                    name: "Weekly Homemade Meal",
+
+                    nameZh: "每周家常餐",
+
+                    description: "Freshly prepared homemade food.",
+
+                    descriptionZh: "新鲜准备的家常美食。",
+
+                    price: 12,
+
+                    image: "images/menu-13-7.jpg"
+
+                },
+
+                {
+
+                    id: "13-tue",
+
+                    day: "TUESDAY",
+
+                    dayZh: "星期二",
+
+                    name: "Homemade Special",
+
+                    nameZh: "家常特色菜",
+
+                    description: "Comforting food made for busy days.",
+
+                    descriptionZh: "为忙碌日子准备的温暖美食。",
+
+                    price: 12,
+
+                    image: "images/menu-14-7.jpg"
+
+                },
+
+                {
+
+                    id: "13-wed",
+
+                    day: "WEDNESDAY",
+
+                    dayZh: "星期三",
+
+                    name: "House Favourite",
+
+                    nameZh: "家常人气菜",
+
+                    description: "A delicious meal prepared with care.",
+
+                    descriptionZh: "用心准备的美味餐点。",
+
+                    price: 12,
+
+                    image: "images/menu-15-7.jpg"
+
+                }
+
+            ]
+
+        },
+
+
+        week6: {
+
+            weekText: "6 JUL — 10 JUL 2026",
+
+            featured: {
+
+                name: "House Favourite",
+
+                nameZh: "家常人气菜",
+
+                price: 12,
+
+                image: "images/menu-6-7.jpg"
+
+            },
+
+            items: [
+
+                {
+
+                    id: "6-mon",
+
+                    day: "MONDAY",
+
+                    dayZh: "星期一",
+
+                    name: "Homemade Meal",
+
+                    nameZh: "家常餐",
+
+                    description: "Simple, comforting and delicious.",
+
+                    descriptionZh: "简单、温暖又美味。",
+
+                    price: 12,
+
+                    image: "images/menu-6-7.jpg"
+
+                },
+
+                {
+
+                    id: "6-tue",
+
+                    day: "TUESDAY",
+
+                    dayZh: "星期二",
+
+                    name: "Daily Special",
+
+                    nameZh: "每日特色菜",
+
+                    description: "Fresh food made for your busy day.",
+
+                    descriptionZh: "为忙碌的一天准备的新鲜美食。",
+
+                    price: 12,
+
+                    image: "images/menu-7-7.jpg"
+
+                }
+
+            ]
+
+        }
+
+    };
+
+
+    let currentMenuKey = "week20";
+
+    let currentMenu = menus[currentMenuKey];
+
+    let order = [];
 
     let deliveryEstimate = null;
 
 
     /* =========================
        ELEMENTS
-    ========================= */
+    ========================== */
 
-    const menuContainer =
-        document.getElementById("menuContainer");
+    const menuGrid =
+        document.getElementById("menuGrid");
 
-    const cartContainer =
-        document.getElementById("cartContainer");
+    const orderItems =
+        document.getElementById("orderItems");
 
-    const foodSubtotal =
-        document.getElementById("foodSubtotal");
+    const orderTotal =
+        document.getElementById("orderTotal");
 
     const deliveryFee =
         document.getElementById("deliveryFee");
 
-    const grandTotal =
-        document.getElementById("grandTotal");
-
-    const getDeliveryEstimateButton =
-        document.getElementById("getDeliveryEstimate");
-
     const deliveryMessage =
         document.getElementById("deliveryMessage");
 
-    const orderForm =
-        document.getElementById("orderForm");
+    const featuredMealName =
+        document.getElementById("featuredMealName");
 
-    const orderConfirmation =
-        document.getElementById("orderConfirmation");
+    const featuredMealPrice =
+        document.getElementById("featuredMealPrice");
 
-    const finalOrderSummary =
-        document.getElementById("finalOrderSummary");
+    const featuredMealImage =
+        document.getElementById("featuredMealImage");
+
+    const menuWeek =
+        document.getElementById("menuWeek");
 
 
     /* =========================
        RENDER MENU
-    ========================= */
+    ========================== */
 
     function renderMenu() {
 
-        menuContainer.innerHTML = "";
+        menuGrid.innerHTML = "";
 
-        menuItems.forEach(function (item) {
+        currentMenu.items.forEach(function (item) {
 
             const name =
                 currentLanguage === "en"
@@ -187,44 +551,51 @@ document.addEventListener("DOMContentLoaded", function () {
                     : item.dayZh;
 
 
-            const menuCard = document.createElement("article");
+            const card =
+                document.createElement("article");
 
-            menuCard.className = "menu-card";
+
+            card.className =
+                "menu-card";
 
 
-            menuCard.innerHTML = `
+            card.innerHTML = `
 
                 <img
+                    class="menu-card-image"
                     src="${item.image}"
                     alt="${name}"
-                    class="menu-image"
-                    onerror="this.style.display='none'"
+                    onerror="this.src='images/menu-20-7.jpg'"
                 >
+
 
                 <div class="menu-card-content">
 
-                    <div class="menu-day">
+                    <div class="menu-card-day">
                         ${day}
                     </div>
+
 
                     <h3>
                         ${name}
                     </h3>
 
-                    <p class="menu-description">
+
+                    <p class="menu-card-description">
                         ${description}
                     </p>
 
-                    <div class="menu-bottom">
 
-                        <span class="menu-price">
+                    <div class="menu-card-bottom">
+
+                        <span class="menu-card-price">
                             RM ${item.price.toFixed(2)}
                         </span>
 
+
                         <button
-                            class="add-button"
+                            class="add-to-order-button"
                             data-id="${item.id}"
-                            aria-label="Add ${name}"
                         >
                             +
                         </button>
@@ -236,20 +607,26 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
 
 
-            menuContainer.appendChild(menuCard);
+            menuGrid.appendChild(card);
 
         });
 
 
-        document.querySelectorAll(".add-button")
+        document
+            .querySelectorAll(".add-to-order-button")
             .forEach(function (button) {
 
                 button.addEventListener("click", function () {
 
-                    const itemId =
-                        Number(button.dataset.id);
+                    addToOrder(button.dataset.id);
 
-                    addToCart(itemId);
+                    document
+                        .getElementById("order")
+                        .scrollIntoView({
+
+                            behavior: "smooth"
+
+                        });
 
                 });
 
@@ -259,36 +636,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       ADD TO CART
-    ========================= */
+       FEATURED MEAL
+    ========================== */
 
-    function addToCart(itemId) {
+    function updateFeaturedMeal() {
 
-        const existingItem =
-            cart.find(function (item) {
+        const featured =
+            currentMenu.featured;
 
-                return item.id === itemId;
+
+        featuredMealName.textContent =
+
+            currentLanguage === "en"
+
+                ? featured.name
+
+                : featured.nameZh;
+
+
+        featuredMealPrice.textContent =
+
+            `RM ${featured.price.toFixed(2)}`;
+
+
+        featuredMealImage.src =
+            featured.image;
+
+
+        menuWeek.textContent =
+            currentMenu.weekText;
+
+    }
+
+
+    /* =========================
+       ADD TO ORDER
+    ========================== */
+
+    function addToOrder(itemId) {
+
+        const item =
+            currentMenu.items.find(function (menuItem) {
+
+                return menuItem.id === itemId;
 
             });
 
 
-        if (existingItem) {
+        if (!item) return;
 
-            existingItem.quantity++;
+
+        const existing =
+            order.find(function (orderItem) {
+
+                return orderItem.id === itemId;
+
+            });
+
+
+        if (existing) {
+
+            existing.quantity++;
 
         } else {
 
-            const menuItem =
-                menuItems.find(function (item) {
+            order.push({
 
-                    return item.id === itemId;
-
-                });
-
-
-            cart.push({
-
-                ...menuItem,
+                ...item,
 
                 quantity: 1
 
@@ -297,21 +711,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
 
-        renderCart();
+        deliveryEstimate = null;
+
+        updateOrder();
 
     }
 
 
     /* =========================
        CHANGE QUANTITY
-    ========================= */
+    ========================== */
 
     function changeQuantity(itemId, change) {
 
         const item =
-            cart.find(function (item) {
+            order.find(function (orderItem) {
 
-                return item.id === itemId;
+                return orderItem.id === itemId;
 
             });
 
@@ -324,79 +740,114 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (item.quantity <= 0) {
 
-            cart =
-                cart.filter(function (cartItem) {
+            order =
+                order.filter(function (orderItem) {
 
-                    return cartItem.id !== itemId;
+                    return orderItem.id !== itemId;
 
                 });
 
         }
 
 
-        renderCart();
+        deliveryEstimate = null;
+
+        updateOrder();
 
     }
 
 
     /* =========================
-       RENDER CART
-    ========================= */
+       CALCULATE SUBTOTAL
+    ========================== */
 
-    function renderCart() {
+    function calculateSubtotal() {
 
-        cartContainer.innerHTML = "";
+        return order.reduce(function (total, item) {
+
+            return total + (
+
+                item.price * item.quantity
+
+            );
+
+        }, 0);
+
+    }
 
 
-        if (cart.length === 0) {
+    /* =========================
+       RENDER ORDER
+    ========================== */
 
-            cartContainer.innerHTML = `
+    function updateOrder() {
 
-                <p class="empty-cart">
+        orderItems.innerHTML = "";
+
+
+        if (order.length === 0) {
+
+            orderItems.innerHTML = `
+
+                <p class="empty-order">
 
                     ${
                         currentLanguage === "en"
-                            ? "Your order is currently empty."
-                            : "您的订单目前是空的。"
+
+                            ? "Select something from the menu to get started."
+
+                            : "请从菜单选择餐点开始。"
+
                     }
 
                 </p>
 
             `;
 
-            updateTotals();
+
+            orderTotal.textContent =
+                "RM 0.00";
+
 
             return;
 
         }
 
 
-        cart.forEach(function (item) {
+        order.forEach(function (item) {
 
             const name =
+
                 currentLanguage === "en"
+
                     ? item.name
+
                     : item.nameZh;
 
 
-            const cartItem =
+            const itemElement =
                 document.createElement("div");
 
 
-            cartItem.className = "cart-item";
+            itemElement.className =
+                "order-item";
 
 
-            cartItem.innerHTML = `
+            itemElement.innerHTML = `
 
-                <div class="cart-item-info">
+                <div>
 
-                    <h4>
+                    <div class="order-item-name">
                         ${name}
-                    </h4>
+                    </div>
 
-                    <p>
+
+                    <div class="order-item-price">
+
                         RM ${item.price.toFixed(2)}
-                    </p>
+                        × ${item.quantity}
+
+                    </div>
 
                 </div>
 
@@ -404,19 +855,21 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="quantity-controls">
 
                     <button
-                        class="quantity-button decrease"
                         data-id="${item.id}"
+                        class="decrease-button"
                     >
                         −
                     </button>
 
-                    <strong>
+
+                    <span>
                         ${item.quantity}
-                    </strong>
+                    </span>
+
 
                     <button
-                        class="quantity-button increase"
                         data-id="${item.id}"
+                        class="increase-button"
                     >
                         +
                     </button>
@@ -426,19 +879,20 @@ document.addEventListener("DOMContentLoaded", function () {
             `;
 
 
-            cartContainer.appendChild(cartItem);
+            orderItems.appendChild(itemElement);
 
         });
 
 
-        document.querySelectorAll(".decrease")
+        document
+            .querySelectorAll(".decrease-button")
             .forEach(function (button) {
 
                 button.addEventListener("click", function () {
 
                     changeQuantity(
 
-                        Number(button.dataset.id),
+                        button.dataset.id,
 
                         -1
 
@@ -449,14 +903,15 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
 
-        document.querySelectorAll(".increase")
+        document
+            .querySelectorAll(".increase-button")
             .forEach(function (button) {
 
                 button.addEventListener("click", function () {
 
                     changeQuantity(
 
-                        Number(button.dataset.id),
+                        button.dataset.id,
 
                         1
 
@@ -467,50 +922,31 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
 
-        updateTotals();
+        updateTotal();
 
     }
 
 
     /* =========================
-       TOTAL CALCULATION
-    ========================= */
+       TOTAL
+    ========================== */
 
-    function calculateFoodSubtotal() {
-
-        return cart.reduce(function (total, item) {
-
-            return total + (item.price * item.quantity);
-
-        }, 0);
-
-    }
-
-
-    function updateTotals() {
+    function updateTotal() {
 
         const subtotal =
-            calculateFoodSubtotal();
-
-
-        foodSubtotal.textContent =
-            `RM ${subtotal.toFixed(2)}`;
+            calculateSubtotal();
 
 
         if (deliveryEstimate !== null) {
 
-            deliveryFee.textContent =
-                `RM ${deliveryEstimate.toFixed(2)}`;
+            orderTotal.textContent =
 
-            grandTotal.textContent =
                 `RM ${(subtotal + deliveryEstimate).toFixed(2)}`;
 
         } else {
 
-            deliveryFee.textContent =
-                "—";
+            orderTotal.textContent =
 
-            grandTotal.textContent =
                 `RM ${subtotal.toFixed(2)}`;
 
         }
@@ -519,25 +955,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       LALAMOVE ESTIMATE
-    ========================= */
+       DELIVERY ESTIMATE
+    ========================== */
 
-    getDeliveryEstimateButton
+    document
+        .getElementById("getDeliveryEstimate")
         .addEventListener("click", function () {
-
-
-            if (cart.length === 0) {
-
-                deliveryMessage.textContent =
-                    currentLanguage === "en"
-
-                        ? "Please select at least one meal first."
-
-                        : "请先选择至少一个餐点。";
-
-                return;
-
-            }
 
 
             const address =
@@ -547,283 +970,353 @@ document.addEventListener("DOMContentLoaded", function () {
                     .trim();
 
 
-            if (!address) {
+            if (order.length === 0) {
 
                 deliveryMessage.textContent =
+
                     currentLanguage === "en"
 
-                        ? "Please enter your delivery address first."
+                        ? "Please select a meal first."
 
-                        : "请先输入您的配送地址。";
+                        : "请先选择餐点。";
 
                 return;
 
             }
 
 
-            getDeliveryEstimateButton.disabled =
-                true;
+            if (!address) {
+
+                deliveryMessage.textContent =
+
+                    currentLanguage === "en"
+
+                        ? "Please enter your delivery address first."
+
+                        : "请先输入配送地址。";
+
+                return;
+
+            }
 
 
-            getDeliveryEstimateButton.textContent =
+            const button = this;
+
+
+            button.disabled = true;
+
+
+            button.textContent =
+
                 currentLanguage === "en"
 
-                    ? "Connecting to Lalamove..."
+                    ? "Preparing quotation..."
 
-                    : "正在连接 Lalamove...";
+                    : "正在准备报价...";
 
 
             deliveryMessage.textContent =
+
                 currentLanguage === "en"
 
-                    ? "Preparing your delivery quotation..."
+                    ? "The secure Lalamove quotation system will calculate the real delivery fee here."
 
-                    : "正在准备您的配送报价...";
+                    : "连接安全的 Lalamove 系统后，这里将计算真实配送费用。";
 
 
             /*
-                TEMPORARY V1.3 PLACEHOLDER
+            ======================================
+            FUTURE LALAMOVE BACKEND CONNECTION
+            ======================================
 
-                The actual Lalamove API will be connected
-                through a secure Google Apps Script backend.
+            PICKUP:
 
-                Pickup location:
+            Jalan TBK 2/3,
+            Taman Bukit Kepayang,
+            Seremban 2,
+            Negeri Sembilan
 
-                Jalan TBK 2/3,
-                Taman Bukit Kepayang,
-                Seremban 2,
-                Negeri Sembilan
+            CUSTOMER:
 
-                DO NOT PUT LALAMOVE API KEYS HERE.
+            deliveryAddress
+
+            FUTURE FLOW:
+
+            WEBSITE
+                ↓
+            GOOGLE APPS SCRIPT
+                ↓
+            LALAMOVE API
+                ↓
+            REAL QUOTATION
+                ↓
+            WEBSITE
+
+            API KEYS MUST NEVER BE STORED HERE.
             */
 
 
             setTimeout(function () {
 
 
-                deliveryEstimate = null;
+                button.disabled = false;
 
 
-                deliveryFee.textContent =
-                    currentLanguage === "en"
-
-                        ? "Pending"
-
-                        : "待确认";
-
-
-                grandTotal.textContent =
-                    `RM ${calculateFoodSubtotal().toFixed(2)}`;
-
-
-                deliveryMessage.innerHTML =
+                button.textContent =
 
                     currentLanguage === "en"
 
-                        ? "Your real Lalamove delivery quotation will be calculated here once the secure backend is connected."
-
-                        : "连接安全后台后，这里将显示真实的 Lalamove 配送报价。";
-
-
-                getDeliveryEstimateButton.disabled =
-                    false;
-
-
-                getDeliveryEstimateButton.textContent =
-                    currentLanguage === "en"
-
-                        ? "Get Lalamove delivery estimate"
+                        ? "Get Lalamove Delivery Estimate"
 
                         : "获取 Lalamove 配送估价";
 
 
-            }, 1000);
+                deliveryFee.textContent =
 
+                    currentLanguage === "en"
+
+                        ? "Pending quotation"
+
+                        : "等待报价";
+
+
+                deliveryMessage.textContent =
+
+                    currentLanguage === "en"
+
+                        ? "Real Lalamove pricing will appear here once the secure backend is connected."
+
+                        : "连接安全后台后，这里将显示真实的 Lalamove 配送价格。";
+
+
+            }, 1000);
 
         });
 
 
     /* =========================
-       ORDER REVIEW
-    ========================= */
+       CLEAR ORDER
+    ========================== */
 
-    orderForm.addEventListener("submit", function (event) {
+    document
+        .getElementById("clearOrder")
+        .addEventListener("click", function () {
 
-        event.preventDefault();
+            order = [];
 
+            deliveryEstimate = null;
 
-        if (cart.length === 0) {
-
-            alert(
+            deliveryFee.textContent =
 
                 currentLanguage === "en"
 
-                    ? "Please select at least one meal."
+                    ? "Enter your address"
 
-                    : "请先选择至少一个餐点。"
-
-            );
-
-            return;
-
-        }
+                    : "输入您的地址";
 
 
-        const name =
-            document
-                .getElementById("customerName")
-                .value;
+            deliveryMessage.textContent = "";
 
 
-        const phone =
-            document
-                .getElementById("customerPhone")
-                .value;
-
-
-        const address =
-            document
-                .getElementById("deliveryAddress")
-                .value;
-
-
-        const subtotal =
-            calculateFoodSubtotal();
-
-
-        let summaryHTML = `
-
-            <p>
-                <strong>
-                    ${
-                        currentLanguage === "en"
-                            ? "Customer"
-                            : "顾客"
-                    }:
-                </strong>
-
-                ${name}
-            </p>
-
-
-            <p>
-                <strong>
-                    WhatsApp:
-                </strong>
-
-                ${phone}
-            </p>
-
-
-            <p>
-                <strong>
-                    ${
-                        currentLanguage === "en"
-                            ? "Address"
-                            : "地址"
-                    }:
-                </strong>
-
-                ${address}
-            </p>
-
-
-            <hr>
-
-
-            <h3>
-                ${
-                    currentLanguage === "en"
-                        ? "Items"
-                        : "餐点"
-                }
-            </h3>
-
-        `;
-
-
-        cart.forEach(function (item) {
-
-            const itemName =
-                currentLanguage === "en"
-                    ? item.name
-                    : item.nameZh;
-
-
-            summaryHTML += `
-
-                <p>
-                    ${itemName}
-                    × ${item.quantity}
-                    — RM ${(item.price * item.quantity).toFixed(2)}
-                </p>
-
-            `;
+            updateOrder();
 
         });
 
 
-        summaryHTML += `
+    /* =========================
+       WHATSAPP ORDER
+    ========================== */
 
-            <hr>
-
-            <p>
-                <strong>
-                    ${
-                        currentLanguage === "en"
-                            ? "Food subtotal"
-                            : "餐点小计"
-                    }:
-                </strong>
-
-                RM ${subtotal.toFixed(2)}
-            </p>
-
-            <p>
-                <strong>
-                    ${
-                        currentLanguage === "en"
-                            ? "Delivery"
-                            : "配送费"
-                    }:
-                </strong>
-
-                ${
-                    deliveryEstimate !== null
-                        ? `RM ${deliveryEstimate.toFixed(2)}`
-                        : (
-                            currentLanguage === "en"
-                                ? "Pending quotation"
-                                : "等待报价"
-                        )
-                }
-            </p>
-
-        `;
+    document
+        .getElementById("orderForm")
+        .addEventListener("submit", function (event) {
 
 
-        finalOrderSummary.innerHTML =
-            summaryHTML;
+            event.preventDefault();
 
 
-        orderConfirmation
-            .classList
-            .remove("hidden");
+            if (order.length === 0) {
+
+                alert(
+
+                    currentLanguage === "en"
+
+                        ? "Please select something from the menu first."
+
+                        : "请先选择餐点。"
+
+                );
+
+                return;
+
+            }
 
 
-        orderConfirmation
-            .scrollIntoView({
+            const name =
+                document
+                    .getElementById("customerName")
+                    .value;
 
-                behavior: "smooth"
+
+            const phone =
+                document
+                    .getElementById("customerPhone")
+                    .value;
+
+
+            const address =
+                document
+                    .getElementById("deliveryAddress")
+                    .value;
+
+
+            const subtotal =
+                calculateSubtotal();
+
+
+            let message =
+
+                "Hello House of Coco!%0A%0A";
+
+
+            message +=
+
+                "I would like to place an order:%0A%0A";
+
+
+            order.forEach(function (item) {
+
+                message +=
+
+                    `${item.name} x ${item.quantity} - RM ${(item.price * item.quantity).toFixed(2)}%0A`;
 
             });
 
-    });
+
+            message +=
+
+                `%0AFood subtotal: RM ${subtotal.toFixed(2)}`;
+
+
+            message +=
+
+                `%0A%0AName: ${name}`;
+
+
+            message +=
+
+                `%0AWhatsApp: ${phone}`;
+
+
+            message +=
+
+                `%0AAddress: ${address}`;
+
+
+            if (deliveryEstimate !== null) {
+
+                message +=
+
+                    `%0AEstimated delivery: RM ${deliveryEstimate.toFixed(2)}`;
+
+            } else {
+
+                message +=
+
+                    `%0ADelivery fee: To be confirmed`;
+
+            }
+
+
+            /*
+                Replace the number below
+                with the client's actual WhatsApp number.
+
+                Malaysia format:
+
+                601XXXXXXXXX
+            */
+
+
+            const whatsappNumber =
+                "60123456789";
+
+
+            window.open(
+
+                `https://wa.me/${whatsappNumber}?text=${message}`,
+
+                "_blank"
+
+            );
+
+        });
+
+
+    /* =========================
+       MENU SWITCHER
+    ========================== */
+
+    document
+        .querySelectorAll(".menu-switch-button")
+        .forEach(function (button) {
+
+
+            button.addEventListener("click", function () {
+
+
+                document
+                    .querySelectorAll(".menu-switch-button")
+                    .forEach(function (btn) {
+
+                        btn.classList.remove("active");
+
+                    });
+
+
+                this.classList.add("active");
+
+
+                currentMenuKey =
+                    this.dataset.menu;
+
+
+                currentMenu =
+                    menus[currentMenuKey];
+
+
+                order = [];
+
+                deliveryEstimate = null;
+
+
+                renderMenu();
+
+                updateFeaturedMeal();
+
+                updateOrder();
+
+
+                const statusText =
+                    document.getElementById("adminStatusText");
+
+
+                statusText.textContent =
+
+                    currentLanguage === "en"
+
+                        ? `${currentMenu.weekText} menu is currently live`
+
+                        : `${currentMenu.weekText} 菜单目前正在使用`;
+
+            });
+
+        });
 
 
     /* =========================
        LANGUAGE TOGGLE
-    ========================= */
+    ========================== */
 
     document
         .getElementById("languageToggle")
@@ -831,48 +1324,64 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             currentLanguage =
+
                 currentLanguage === "en"
+
                     ? "zh"
+
                     : "en";
 
 
             document
-                .querySelectorAll("[data-en]")
+                .getElementById("languageLabel")
+                .textContent =
+
+                currentLanguage === "en"
+
+                    ? "EN"
+
+                    : "中文";
+
+
+            document
+                .querySelectorAll("[data-i18n]")
                 .forEach(function (element) {
 
-                    element.textContent =
 
-                        currentLanguage === "en"
+                    const key =
+                        element.dataset.i18n;
 
-                            ? element.dataset.en
 
-                            : element.dataset.zh;
+                    if (
+
+                        translations[currentLanguage][key]
+
+                    ) {
+
+                        element.innerHTML =
+
+                            translations[currentLanguage][key];
+
+                    }
 
                 });
 
 
-            this.textContent =
-
-                currentLanguage === "en"
-
-                    ? "中文"
-
-                    : "EN";
-
-
             renderMenu();
 
-            renderCart();
+            updateFeaturedMeal();
+
+            updateOrder();
 
         });
 
 
     /* =========================
        DARK MODE
-    ========================= */
+    ========================== */
 
     document
-        .getElementById("darkModeToggle")
+        .getElementById("themeToggle")
         .addEventListener("click", function () {
 
 
@@ -882,7 +1391,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 .toggle("dark-mode");
 
 
-            const darkModeEnabled =
+            const darkMode =
+
                 document
                     .body
                     .classList
@@ -890,16 +1400,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             this.textContent =
-                darkModeEnabled
-                    ? "☀️"
-                    : "🌙";
+
+                darkMode
+
+                    ? "☀"
+
+                    : "☾";
 
 
             localStorage.setItem(
 
                 "houseOfCocoDarkMode",
 
-                darkModeEnabled
+                darkMode
 
             );
 
@@ -907,8 +1420,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =========================
-       LOAD SAVED DARK MODE
-    ========================= */
+       LOAD DARK MODE
+    ========================== */
 
     if (
 
@@ -926,19 +1439,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         document
-            .getElementById("darkModeToggle")
-            .textContent = "☀️";
+            .getElementById("themeToggle")
+            .textContent = "☀";
 
     }
 
 
     /* =========================
-       INITIAL RENDER
-    ========================= */
+       INITIAL LOAD
+    ========================== */
 
     renderMenu();
 
-    renderCart();
+    updateFeaturedMeal();
+
+    updateOrder();
 
 
 });
