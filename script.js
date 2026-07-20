@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
 
     console.log("House of Coco V1.6 loaded");
@@ -212,45 +213,34 @@ document.addEventListener("DOMContentLoaded", function () {
         const menu =
             menus[currentMenu];
 
-
-        menuGrid.innerHTML =
-            "";
-
+        menuGrid.innerHTML = "";
 
         menuWeek.textContent =
             menu.weekLabel;
 
-
         featuredMealImage.src =
             menu.featuredImage;
-
 
         featuredMealName.textContent =
             currentLanguage === "en"
                 ? menu.days[0].name
                 : menu.days[0].chineseName;
 
-
         featuredMealPrice.textContent =
             `RM ${menu.days[0].price.toFixed(2)}`;
 
-
         menu.days.forEach((meal) => {
-
 
             const quantity =
                 order[meal.date] || 0;
 
-
             const card =
                 document.createElement("div");
-
 
             card.className =
                 quantity > 0
                     ? "menu-card selected"
                     : "menu-card";
-
 
             card.innerHTML = `
 
@@ -314,11 +304,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             `;
 
-
             menuGrid.appendChild(card);
 
         });
-
 
         attachQuantityEvents();
 
@@ -331,22 +319,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function attachQuantityEvents() {
 
-
         document
             .querySelectorAll(".plus-button")
             .forEach((button) => {
 
-
                 button.addEventListener("click", () => {
-
 
                     const date =
                         button.dataset.date;
 
-
                     order[date] =
                         (order[date] || 0) + 1;
-
 
                     renderMenu();
 
@@ -361,26 +344,20 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelectorAll(".minus-button")
             .forEach((button) => {
 
-
                 button.addEventListener("click", () => {
-
 
                     const date =
                         button.dataset.date;
 
-
                     if (!order[date]) return;
 
-
                     order[date]--;
-
 
                     if (order[date] <= 0) {
 
                         delete order[date];
 
                     }
-
 
                     renderMenu();
 
@@ -401,13 +378,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("wholeWeekButton")
         .addEventListener("click", () => {
 
-
             const menu =
                 menus[currentMenu];
 
-
             menu.days.forEach((meal) => {
-
 
                 if (!order[meal.date]) {
 
@@ -416,7 +390,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
             });
-
 
             renderMenu();
 
@@ -431,9 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function clearSelection() {
 
-
         order = {};
-
 
         renderMenu();
 
@@ -458,10 +429,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function renderOrder() {
 
-
         const menu =
             menus[currentMenu];
-
 
         const selectedMeals =
             menu.days.filter(
@@ -473,7 +442,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (selectedMeals.length === 0) {
 
-
             orderItems.innerHTML = `
 
                 <p class="empty-order">
@@ -484,13 +452,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             `;
 
-
             foodTotal.textContent =
                 "RM 0.00";
 
-
             updateTotals(0);
-
 
             return;
 
@@ -500,21 +465,17 @@ document.addEventListener("DOMContentLoaded", function () {
         let total =
             0;
 
-
         orderItems.innerHTML =
             "";
 
 
         selectedMeals.forEach((meal) => {
 
-
             const quantity =
                 order[meal.date];
 
-
             const subtotal =
                 meal.price * quantity;
-
 
             total +=
                 subtotal;
@@ -522,7 +483,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const item =
                 document.createElement("div");
-
 
             item.className =
                 "order-item";
@@ -568,7 +528,6 @@ document.addEventListener("DOMContentLoaded", function () {
         foodTotal.textContent =
             `RM ${total.toFixed(2)}`;
 
-
         updateTotals(total);
 
     }
@@ -580,17 +539,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function estimateDeliveryFee(address) {
 
-
         if (!address || address.length < 8) {
-
 
             deliveryFee.textContent =
                 "Enter your address";
 
-
             summaryDeliveryFee.textContent =
                 "RM 0.00";
-
 
             return 0;
 
@@ -615,12 +570,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ) {
 
-
             estimatedFee =
                 8;
 
         }
-
 
         else if (
 
@@ -628,15 +581,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         ) {
 
-
             estimatedFee =
                 10;
 
         }
 
-
         else {
-
 
             estimatedFee =
                 15;
@@ -646,7 +596,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         deliveryFee.textContent =
             `Approximately RM ${estimatedFee.toFixed(2)}`;
-
 
         summaryDeliveryFee.textContent =
             `RM ${estimatedFee.toFixed(2)}`;
@@ -658,7 +607,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function updateTotals(foodAmount) {
-
 
         const address =
             document
@@ -680,7 +628,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("deliveryAddress")
         .addEventListener("input", () => {
 
-
             renderOrder();
 
         });
@@ -694,27 +641,21 @@ document.addEventListener("DOMContentLoaded", function () {
         .querySelectorAll(".menu-switch-button")
         .forEach((button) => {
 
-
             button.addEventListener("click", () => {
-
 
                 currentMenu =
                     button.dataset.menu;
 
-
                 order =
                     {};
-
 
                 document
                     .querySelectorAll(".menu-switch-button")
                     .forEach((btn) => {
 
-
                         btn.classList.remove("active");
 
                     });
-
 
                 button.classList.add("active");
 
@@ -742,7 +683,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("themeToggle")
         .addEventListener("click", () => {
 
-
             document
                 .body
                 .classList
@@ -756,7 +696,6 @@ document.addEventListener("DOMContentLoaded", function () {
     ========================== */
 
     const translations = {
-
 
         en: {
 
@@ -1036,7 +975,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateLanguage() {
 
-
         const language =
             translations[currentLanguage];
 
@@ -1045,13 +983,11 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelectorAll("[data-i18n]")
             .forEach((element) => {
 
-
                 const key =
                     element.dataset.i18n;
 
 
                 if (language[key]) {
-
 
                     element.innerHTML =
                         language[key];
@@ -1081,7 +1017,6 @@ document.addEventListener("DOMContentLoaded", function () {
         .getElementById("languageToggle")
         .addEventListener("click", () => {
 
-
             currentLanguage =
 
                 currentLanguage === "en"
@@ -1100,9 +1035,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function saveOrderToBackend(orderData) {
 
-
         try {
-
 
             const response =
                 await fetch(
@@ -1116,12 +1049,36 @@ document.addEventListener("DOMContentLoaded", function () {
                         headers: {
 
                             "Content-Type":
-                                "text/plain;charset=utf-8"
+                                "application/x-www-form-urlencoded;charset=UTF-8"
 
                         },
 
                         body:
-                            JSON.stringify(orderData)
+
+                            new URLSearchParams({
+
+                                customerName:
+                                    orderData.customerName,
+
+                                phone:
+                                    orderData.phone,
+
+                                address:
+                                    orderData.address,
+
+                                orderDetails:
+                                    orderData.orderDetails,
+
+                                foodTotal:
+                                    orderData.foodTotal,
+
+                                deliveryFee:
+                                    orderData.deliveryFee,
+
+                                total:
+                                    orderData.total
+
+                            }).toString()
 
                     }
 
@@ -1133,7 +1090,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             if (!result.success) {
-
 
                 throw new Error(
 
@@ -1147,12 +1103,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             return result;
 
-
         }
 
 
         catch (error) {
-
 
             console.error(
 
@@ -1161,7 +1115,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 error
 
             );
-
 
             throw error;
 
@@ -1177,7 +1130,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document
         .getElementById("orderForm")
         .addEventListener("submit", async (event) => {
-
 
             event.preventDefault();
 
@@ -1217,7 +1169,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (selectedMeals.length === 0) {
 
-
                 alert(
 
                     currentLanguage === "en"
@@ -1228,14 +1179,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 );
 
-
                 return;
 
             }
 
 
             if (!name || !phone || !address) {
-
 
                 alert(
 
@@ -1246,7 +1195,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         : "请填写您的姓名、WhatsApp 电话号码和配送地址。"
 
                 );
-
 
                 return;
 
@@ -1267,6 +1215,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             submitButton.innerHTML =
+
                 currentLanguage === "en"
 
                     ? "Saving Order..."
@@ -1287,7 +1236,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             selectedMeals.forEach((meal) => {
-
 
                 const quantity =
                     order[meal.date];
@@ -1329,30 +1277,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const backendOrder = {
 
-
                 customerName:
                     name,
-
 
                 phone:
                     phone,
 
-
                 address:
                     address,
-
 
                 orderDetails:
                     orderDetails,
 
-
                 foodTotal:
                     foodTotalAmount,
 
-
                 deliveryFee:
                     estimatedDelivery,
-
 
                 total:
                     total
@@ -1361,7 +1302,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             try {
-
 
                 const result =
                     await saveOrderToBackend(
@@ -1387,12 +1327,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 orderText +=
 
-                    `CUSTOMER%0AName: ${name}%0AWhatsApp: ${phone}%0A%0A`;
+                    `CUSTOMER%0AName: ${encodeURIComponent(name)}%0AWhatsApp: ${encodeURIComponent(phone)}%0A%0A`;
 
 
                 orderText +=
 
-                    `DELIVERY ADDRESS%0A${address}%0A%0A`;
+                    `DELIVERY ADDRESS%0A${encodeURIComponent(address)}%0A%0A`;
 
 
                 orderText +=
@@ -1441,11 +1381,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 submitButton.innerHTML =
                     originalButtonText;
 
-
             }
 
 
             catch (error) {
+
+                console.error(
+
+                    "FINAL ORDER ERROR:",
+
+                    error
+
+                );
 
 
                 alert(
