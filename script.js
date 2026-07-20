@@ -1035,94 +1035,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function saveOrderToBackend(orderData) {
 
+    try {
+
+        const response = await fetch(
+            BACKEND_URL,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8"
+                },
+                body: JSON.stringify(orderData)
+            }
+        );
+
+        console.log("Backend response status:", response.status);
+        console.log("Backend response URL:", response.url);
+
+        const responseText =
+            await response.text();
+
+        console.log("Backend raw response:", responseText);
+
+        let result;
+
         try {
 
-            const response =
-                await fetch(
+            result =
+                JSON.parse(responseText);
 
-                    BACKEND_URL,
+        } catch (jsonError) {
 
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/x-www-form-urlencoded;charset=UTF-8"
-
-                        },
-
-                        body:
-
-                            new URLSearchParams({
-
-                                customerName:
-                                    orderData.customerName,
-
-                                phone:
-                                    orderData.phone,
-
-                                address:
-                                    orderData.address,
-
-                                orderDetails:
-                                    orderData.orderDetails,
-
-                                foodTotal:
-                                    orderData.foodTotal,
-
-                                deliveryFee:
-                                    orderData.deliveryFee,
-
-                                total:
-                                    orderData.total
-
-                            }).toString()
-
-                    }
-
-                );
-
-
-            const result =
-                await response.json();
-
-
-            if (!result.success) {
-
-                throw new Error(
-
-                    result.error ||
-                    "Backend failed to save order."
-
-                );
-
-            }
-
-
-            return result;
-
-        }
-
-
-        catch (error) {
-
-            console.error(
-
-                "Order saving failed:",
-
-                error
-
+            throw new Error(
+                "Backend returned non-JSON response: " +
+                responseText
             );
 
-            throw error;
+        }
+
+        if (!result.success) {
+
+            throw new Error(
+                result.error ||
+                "Backend returned success:false"
+            );
 
         }
+
+        return result;
 
     }
 
+    catch (error) {
 
+        console.error(
+            "ACTUAL BACKEND ERROR:",
+            error
+        );
+
+        alert(
+            "ACTUAL ERROR:\n\n" +
+            error.message
+        );
+
+        throw error;
+
+    }
+
+}
     /* =========================
        WHATSAPP + BACKEND ORDER
     ========================== */
