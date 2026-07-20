@@ -1391,4 +1391,27 @@ async function saveOrderToBackend(orderData) {
 
     renderOrder();
 
+    fetch(BACKEND_URL, {
+    method: "POST",
+    headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+    },
+    body: JSON.stringify({
+        customerName: "TEST CUSTOMER",
+        phone: "60123456789",
+        address: "Test Address Seremban",
+        orderDetails: "TEST MEAL x 1 = RM 12.00",
+        foodTotal: 12,
+        deliveryFee: 8,
+        total: 20
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log("DIRECT BACKEND TEST:", data);
+})
+.catch(error => {
+    console.error("DIRECT BACKEND TEST ERROR:", error);
+});
+
 });
