@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-```
+
 console.log("House of Coco V1.6 loaded");
 
 
@@ -1392,6 +1392,6 @@ document
 renderMenu();
 
 renderOrder();
-```
+
 
 });
