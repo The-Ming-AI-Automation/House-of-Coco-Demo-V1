@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
        CONFIGURATION
     ========================== */
 
-    const WHATSAPP_NUMBER = "60123456789";
+    const WHATSAPP_NUMBER = "601111490174";
 
     const BACKEND_URL =
         "https://script.google.com/macros/s/AKfycbyt_OqXTRX_Di0zyfhDYXwSpot8r5P5quKfjLzj11bQb3nzW22Nw4R7G_m5FIrole0oRg/exec";
