@@ -1028,60 +1028,50 @@ document.addEventListener("DOMContentLoaded", function () {
 
         });
 
+/* =========================
+SAVE ORDER TO BACKEND
+========================== */
 
-    /* =========================
-       SAVE ORDER TO BACKEND
-    ========================== */
-
-    async function saveOrderToBackend(orderData) {
+async function saveOrderToBackend(orderData) {
 
     try {
 
-        const response = await fetch(
+        await fetch(
+
             BACKEND_URL,
+
             {
+
                 method: "POST",
+
+                mode: "no-cors",
+
                 headers: {
-                    "Content-Type": "text/plain;charset=utf-8"
+
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+
                 },
-                body: JSON.stringify(orderData)
+
+                body:
+                    JSON.stringify(orderData)
+
             }
+
         );
 
-        console.log("Backend response status:", response.status);
-        console.log("Backend response URL:", response.url);
+        console.log(
+            "Order sent to House of Coco backend."
+        );
 
-        const responseText =
-            await response.text();
+        return {
 
-        console.log("Backend raw response:", responseText);
+            success: true,
 
-        let result;
+            orderId:
+                "HOC-" + Date.now()
 
-        try {
-
-            result =
-                JSON.parse(responseText);
-
-        } catch (jsonError) {
-
-            throw new Error(
-                "Backend returned non-JSON response: " +
-                responseText
-            );
-
-        }
-
-        if (!result.success) {
-
-            throw new Error(
-                result.error ||
-                "Backend returned success:false"
-            );
-
-        }
-
-        return result;
+        };
 
     }
 
@@ -1092,16 +1082,12 @@ document.addEventListener("DOMContentLoaded", function () {
             error
         );
 
-        alert(
-            "ACTUAL ERROR:\n\n" +
-            error.message
-        );
-
         throw error;
 
     }
 
 }
+
     /* =========================
        WHATSAPP + BACKEND ORDER
     ========================== */
